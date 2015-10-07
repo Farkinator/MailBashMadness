@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="256" tileheight="256" nextobjectid="55">
- <tileset firstgid="1" name="Grass" tilewidth="256" tileheight="256" tilecount="1">
-  <image source="Grass.jpg" width="256" height="256"/>
- </tileset>
- <tileset firstgid="2" name="Road" tilewidth="256" tileheight="256" tilecount="1">
-  <image source="road.jpg" width="256" height="256"/>
- </tileset>
- <tileset firstgid="3" name="House" tilewidth="256" tileheight="256" tilecount="1">
-  <image source="house.jpg" width="256" height="256"/>
- </tileset>
- <tileset firstgid="4" name="Foliage" tilewidth="256" tileheight="256" tilecount="1">
-  <image source="Foliage.jpg" width="256" height="256"/>
+ <tileset firstgid="1" name="Tiles" tilewidth="256" tileheight="256" tilecount="4">
+  <image source="Tiles.jpg" width="1024" height="256"/>
  </tileset>
  <layer name="Background" width="50" height="50" opacity="0.9">
   <data encoding="base64" compression="zlib">
@@ -27,7 +18,7 @@
    eJztmMEOAyEIRPfQ///mpmkPjYnK4Ayg8SV7qFvRWQXB5/ny+j09eu9n7e27UdtofARUx2h8VnsU6PiZc71cLjqyYxGD2Tmyiz6LDjRue/V7xmH/t+2j6uf9vigr9i25hEVHRX9o52xZC9Z6sftb9lr7e7Zeljkw9hbqw2yfz4jXqly4op+x2FGXtc6sDFIvVyXqrEXmstJ3dx3/Nk5A6R9R662+N9pNhzWfreKPPTz1iGIODBtIHsSk+hojIHthd5Q6WHaROoUJc09n+scpOlZB691ovLW4Oi9RgOSDVTX0qPzdM8iK32zbltinPk+jz1QF1z8ukZyy16r5zeodnQLULuOukd3Hk89F504qHd6xPrwBOkwD/Q==
   </data>
  </layer>
- <objectgroup name="Object Layer 1">
+ <objectgroup name="Object Layer 1" visible="0">
   <object id="8" x="4608" y="32" width="992" height="992"/>
   <object id="9" x="3056" y="288" width="1024" height="1008"/>
   <object id="10" x="2016" y="528" width="768" height="992"/>
