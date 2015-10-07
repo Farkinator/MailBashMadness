@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="256" tileheight="256" nextobjectid="1">
+ <tileset firstgid="1" name="Grass" tilewidth="256" tileheight="256" tilecount="1">
+  <image source="Grass.jpg" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="2" name="Road" tilewidth="256" tileheight="256" tilecount="1">
+  <image source="road.jpg" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="3" name="House" tilewidth="256" tileheight="256" tilecount="1">
+  <image source="house.jpg" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="4" name="Foliage" tilewidth="256" tileheight="256" tilecount="1">
+  <image source="Foliage.jpg" width="256" height="256"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztWEluwzAMtJP8/81tgAQQiNko2a4PPRAttHLIGVLOvm3b/muvj73/f3xsH2ycV+PPMl73qDF0jjLk577lOJCvz2JofJ9YP+Kqc9XPdB6tZ36x+19kXPl7BI46x+5Ba9Ec4g3jEDuf8UrNq9g4/p5pjw3jUPpRPj9uYIlfaUz+GseZMUG1rsMXde4ZOBIMSc/o8vooXiWW4HiR+8eagnoW8lHVs5QTXQ4pDDM4VP9Q+U/im5ri6xPcw/in+mTytlI4au9PNZtin51HeVK5qDiUHur9qA+rd2CCA2nVYVXYKwbHF6ePykE03+W+W48wIBxI59+/qT5W626qhy5fuvXqbEO8SfVZ16FvlysxJDhqP0f5QLl3vJrhXGfPjD4UDhYPN49qpeJy+v1Ta3ynXnXuSXCw7+AUx+y7ZAaH4nwXB6tXLsfJOY5X6Z4VHEwfKzjGc1zfW9FH1XNH54gzqJ51cCAMV+OoOUVYEC6XDxYjpr8ub5LvGHSWexOqWuD6jHq/pPWKvbvVfYmfCYZOjpN8udwyHjB/Wa4UFoVD9ckkd4r3DIvim6vnjtMKh3tTsnwojrF8IhwqH3WdyrHC0O0rLl5dfSiuJHXvKByORys6n8XBfOrek/bW5F0ywyv1dvzWFIcD5XK2n6/oXOFI8oF8Uzi6+kvet11epZbofFZ/KbZOvGb2d/Jdc836HlqT+uHidES9QtpTvE7fqyweKo6rvOr8rpjiYGu7OI7k7RX6YDX/3+5hKc/vZggHq6NIs0jDbm8yPurY7UH6SvqBq4mqtiT7xzeXwqH6A6qhKnbjHnUXio+7j8WUYVutq0n/YGs6vUfxpeL4AcKPEl8=
+  </data>
+ </layer>
+</map>
