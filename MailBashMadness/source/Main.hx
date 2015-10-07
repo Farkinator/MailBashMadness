@@ -22,7 +22,7 @@ class Main extends Sprite
 	
 	public static function main():Void
 	{	
-		
+
 		Lib.current.addChild(new Main());
 	}
 	
@@ -63,7 +63,7 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-
+		trace(zoom);
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 	}
 }

@@ -6,6 +6,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.FlxCamera;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -19,6 +20,10 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		add(player = new Player(200, 200, this));
+
+		FlxG.camera.follow(player, FlxCamera.STYLE_TOPDOWN, 1);
+		// FlxG.camera.setSize(1024, 768);
+
 		super.create();
 	}
 	

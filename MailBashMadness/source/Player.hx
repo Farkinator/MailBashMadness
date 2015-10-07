@@ -40,6 +40,7 @@ class Player extends FlxSprite{
 	public var MAXSWINGSTRENGTH:Float = 80.0;
 	// how badly an overswing affects recharge rate.
 	public var OVERSWING_PENALTY:Float = 3.0;
+	public var BASE_SWING_STR:Float = 100;
 
 	// +--------------------------------------------+
   	// |              LOCAL MEMBERS                 |
