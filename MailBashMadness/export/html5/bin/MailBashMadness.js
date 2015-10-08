@@ -25,14 +25,14 @@ ApplicationMain.create = function() {
 	var types = [];
 	urls.push("assets/data/data-goes-here.txt");
 	types.push("TEXT");
-	urls.push("assets/data/Map 1.tmx");
+	urls.push("assets/data/Map1.tmx");
 	types.push("TEXT");
-	urls.push("assets/data/Tiles.jpg");
-	types.push("IMAGE");
 	urls.push("assets/images/clearlyacar.png");
 	types.push("IMAGE");
 	urls.push("assets/images/images-go-here.txt");
 	types.push("TEXT");
+	urls.push("assets/images/Tiles.jpg");
+	types.push("IMAGE");
 	urls.push("assets/music/Music With Filter No Sirens.wav");
 	types.push("SOUND");
 	urls.push("assets/music/music-goes-here.txt");
@@ -77,7 +77,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "335", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
+	ApplicationMain.config = { build : "346", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -1399,18 +1399,18 @@ var DefaultAssetLibrary = function() {
 	id = "assets/data/data-goes-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
-	id = "assets/data/Map 1.tmx";
+	id = "assets/data/Map1.tmx";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
-	id = "assets/data/Tiles.jpg";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
 	id = "assets/images/clearlyacar.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/images/images-go-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
+	id = "assets/images/Tiles.jpg";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
 	id = "assets/music/Music With Filter No Sirens.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
@@ -1773,6 +1773,10 @@ EReg.prototype = {
 	,matched: function(n) {
 		if(this.r.m != null && n >= 0 && n < this.r.m.length) return this.r.m[n]; else throw new js__$Boot_HaxeError("EReg::matched");
 	}
+	,split: function(s) {
+		var d = "#__delim__#";
+		return s.replace(this.r,d).split(d);
+	}
 	,replace: function(s,by) {
 		return s.replace(this.r,by);
 	}
@@ -1895,7 +1899,29 @@ List.prototype = {
 		this.length--;
 		return x;
 	}
+	,iterator: function() {
+		return new _$List_ListIterator(this.h);
+	}
 	,__class__: List
+};
+var _$List_ListIterator = function(head) {
+	this.head = head;
+	this.val = null;
+};
+$hxClasses["_List.ListIterator"] = _$List_ListIterator;
+_$List_ListIterator.__name__ = ["_List","ListIterator"];
+_$List_ListIterator.prototype = {
+	head: null
+	,val: null
+	,hasNext: function() {
+		return this.head != null;
+	}
+	,next: function() {
+		this.val = this.head[0];
+		this.head = this.head[1];
+		return this.val;
+	}
+	,__class__: _$List_ListIterator
 };
 Math.__name__ = ["Math"];
 var flixel_interfaces_IFlxDestroyable = function() { };
@@ -2469,8 +2495,26 @@ PlayState.__super__ = flixel_FlxState;
 PlayState.prototype = $extend(flixel_FlxState.prototype,{
 	player: null
 	,create: function() {
-		this.add(this.player = new Player(200,200,this));
 		flixel_FlxState.prototype.create.call(this);
+		var tiledLevel = new flixel_addons_editors_tiled_TiledMap("assets/data/Map1.tmx");
+		var tileSize = tiledLevel.tileWidth;
+		var mapW = tiledLevel.width;
+		var mapH = tiledLevel.height;
+		var _g = 0;
+		var _g1 = tiledLevel.layers;
+		while(_g < _g1.length) {
+			var layer = _g1[_g];
+			++_g;
+			var layerData = layer.get_tileArray();
+			var tileSheetName = layer.properties.keys.get("tilesheet");
+			var tilesheetPath = "assets/images/" + tileSheetName;
+			var level = new flixel_tile_FlxTilemap();
+			level.widthInTiles = mapW;
+			level.heightInTiles = mapH;
+			level.loadMap(layer.get_tileArray(),tilesheetPath,tileSize,tileSize,0,1);
+			this.add(level);
+		}
+		this.add(this.player = new Player(200,200,this));
 	}
 	,destroy: function() {
 		flixel_FlxState.prototype.destroy.call(this);
@@ -3868,6 +3912,9 @@ Reflect.fields = function(o) {
 Reflect.isFunction = function(f) {
 	return typeof(f) == "function" && !(f.__name__ || f.__ename__);
 };
+Reflect.compare = function(a,b) {
+	if(a == b) return 0; else if(a > b) return 1; else return -1;
+};
 Reflect.compareMethods = function(f1,f2) {
 	if(f1 == f2) return true;
 	if(!Reflect.isFunction(f1) || !Reflect.isFunction(f2)) return false;
@@ -3877,6 +3924,9 @@ Reflect.isObject = function(v) {
 	if(v == null) return false;
 	var t = typeof(v);
 	return t == "string" || t == "object" && v.__enum__ == null || t == "function" && (v.__name__ || v.__ename__) != null;
+};
+Reflect.isEnumValue = function(v) {
+	return v != null && v.__enum__ != null;
 };
 Reflect.deleteField = function(o,field) {
 	if(!Object.prototype.hasOwnProperty.call(o,field)) return false;
@@ -3916,6 +3966,9 @@ StringBuf.prototype = {
 	b: null
 	,add: function(x) {
 		this.b += Std.string(x);
+	}
+	,addSub: function(s,pos,len) {
+		if(len == null) this.b += HxOverrides.substr(s,pos,null); else this.b += HxOverrides.substr(s,pos,len);
 	}
 	,__class__: StringBuf
 };
@@ -4141,17 +4194,81 @@ _$UInt_UInt_$Impl_$.toFloat = function(this1) {
 	var $int = this1;
 	if($int < 0) return 4294967296.0 + $int; else return $int + 0.0;
 };
-var Xml = function() { };
+var Xml = function(nodeType) {
+	this.nodeType = nodeType;
+	this.children = [];
+	this.attributeMap = new haxe_ds_StringMap();
+};
 $hxClasses["Xml"] = Xml;
 Xml.__name__ = ["Xml"];
+Xml.parse = function(str) {
+	return haxe_xml_Parser.parse(str);
+};
+Xml.createElement = function(name) {
+	var xml = new Xml(Xml.Element);
+	if(xml.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element but found " + xml.nodeType);
+	xml.nodeName = name;
+	return xml;
+};
+Xml.createPCData = function(data) {
+	var xml = new Xml(Xml.PCData);
+	if(xml.nodeType == Xml.Document || xml.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + xml.nodeType);
+	xml.nodeValue = data;
+	return xml;
+};
+Xml.createCData = function(data) {
+	var xml = new Xml(Xml.CData);
+	if(xml.nodeType == Xml.Document || xml.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + xml.nodeType);
+	xml.nodeValue = data;
+	return xml;
+};
+Xml.createComment = function(data) {
+	var xml = new Xml(Xml.Comment);
+	if(xml.nodeType == Xml.Document || xml.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + xml.nodeType);
+	xml.nodeValue = data;
+	return xml;
+};
+Xml.createDocType = function(data) {
+	var xml = new Xml(Xml.DocType);
+	if(xml.nodeType == Xml.Document || xml.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + xml.nodeType);
+	xml.nodeValue = data;
+	return xml;
+};
+Xml.createProcessingInstruction = function(data) {
+	var xml = new Xml(Xml.ProcessingInstruction);
+	if(xml.nodeType == Xml.Document || xml.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + xml.nodeType);
+	xml.nodeValue = data;
+	return xml;
+};
+Xml.createDocument = function() {
+	return new Xml(Xml.Document);
+};
 Xml.prototype = {
 	nodeType: null
 	,nodeName: null
+	,nodeValue: null
+	,parent: null
 	,children: null
 	,attributeMap: null
+	,get_nodeName: function() {
+		if(this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element but found " + this.nodeType);
+		return this.nodeName;
+	}
 	,get: function(att) {
 		if(this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element but found " + this.nodeType);
 		return this.attributeMap.get(att);
+	}
+	,set: function(att,value) {
+		if(this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element but found " + this.nodeType);
+		this.attributeMap.set(att,value);
+	}
+	,exists: function(att) {
+		if(this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element but found " + this.nodeType);
+		return this.attributeMap.exists(att);
+	}
+	,iterator: function() {
+		if(this.nodeType != Xml.Document && this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element or Document but found " + this.nodeType);
+		return HxOverrides.iter(this.children);
 	}
 	,elements: function() {
 		if(this.nodeType != Xml.Document && this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element or Document but found " + this.nodeType);
@@ -4167,7 +4284,41 @@ Xml.prototype = {
 		ret = _g;
 		return HxOverrides.iter(ret);
 	}
+	,elementsNamed: function(name) {
+		if(this.nodeType != Xml.Document && this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element or Document but found " + this.nodeType);
+		var ret;
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = this.children;
+		while(_g1 < _g2.length) {
+			var child = _g2[_g1];
+			++_g1;
+			if(child.nodeType == Xml.Element && (function($this) {
+				var $r;
+				if(child.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element but found " + child.nodeType);
+				$r = child.nodeName;
+				return $r;
+			}(this)) == name) _g.push(child);
+		}
+		ret = _g;
+		return HxOverrides.iter(ret);
+	}
+	,addChild: function(x) {
+		if(this.nodeType != Xml.Document && this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element or Document but found " + this.nodeType);
+		if(x.parent != null) x.parent.removeChild(x);
+		this.children.push(x);
+		x.parent = this;
+	}
+	,removeChild: function(x) {
+		if(this.nodeType != Xml.Document && this.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element or Document but found " + this.nodeType);
+		if(HxOverrides.remove(this.children,x)) {
+			x.parent = null;
+			return true;
+		}
+		return false;
+	}
 	,__class__: Xml
+	,__properties__: {get_nodeName:"get_nodeName"}
 };
 var flixel_FlxCamera = function(X,Y,Width,Height,Zoom) {
 	if(Zoom == null) Zoom = 0;
@@ -8306,6 +8457,603 @@ flixel_FlxSubState.prototype = $extend(flixel_FlxState.prototype,{
 	}
 	,__class__: flixel_FlxSubState
 });
+var flixel_addons_editors_tiled_TiledLayer = function(Source,Parent) {
+	this.properties = new flixel_addons_editors_tiled_TiledPropertySet();
+	this.map = Parent;
+	this.name = Source.att.resolve("name");
+	if(Source.has.resolve("x")) this.x = Std.parseInt(Source.att.resolve("x")); else this.x = 0;
+	if(Source.has.resolve("y")) this.y = Std.parseInt(Source.att.resolve("y")); else this.y = 0;
+	this.width = Std.parseInt(Source.att.resolve("width"));
+	this.height = Std.parseInt(Source.att.resolve("height"));
+	if(Source.has.resolve("visible") && Source.att.resolve("visible") == "0") this.visible = false; else this.visible = true;
+	if(Source.has.resolve("opacity")) this.opacity = Std.parseFloat(Source.att.resolve("opacity")); else this.opacity = 1.0;
+	this.tiles = [];
+	var node;
+	var _g = Source.nodes.resolve("properties").iterator();
+	while(_g.head != null) {
+		var node1;
+		node1 = (function($this) {
+			var $r;
+			_g.val = _g.head[0];
+			_g.head = _g.head[1];
+			$r = _g.val;
+			return $r;
+		}(this));
+		this.properties.extend(node1);
+	}
+	this._xmlData = Source.node.resolve("data");
+	if(this._xmlData == null) throw new js__$Boot_HaxeError("Error loading TiledLayer level data");
+};
+$hxClasses["flixel.addons.editors.tiled.TiledLayer"] = flixel_addons_editors_tiled_TiledLayer;
+flixel_addons_editors_tiled_TiledLayer.__name__ = ["flixel","addons","editors","tiled","TiledLayer"];
+flixel_addons_editors_tiled_TiledLayer.base64ToByteArray = function(data) {
+	var output = new lime_utils_ByteArray();
+	var lookup = [];
+	var c;
+	var _g1 = 0;
+	var _g = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".length;
+	while(_g1 < _g) {
+		var c1 = _g1++;
+		lookup[HxOverrides.cca("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",c1)] = c1;
+	}
+	var i = 0;
+	while(i < data.length - 3) {
+		if(data.charAt(i) == " " || data.charAt(i) == "\n" || data.charAt(i) == "\r") {
+			i++;
+			continue;
+		}
+		var a0 = lookup[HxOverrides.cca(data,i)];
+		var a1 = lookup[HxOverrides.cca(data,i + 1)];
+		var a2 = lookup[HxOverrides.cca(data,i + 2)];
+		var a3 = lookup[HxOverrides.cca(data,i + 3)];
+		if(a1 < 64) output.writeByte((a0 << 2) + ((a1 & 48) >> 4));
+		if(a2 < 64) output.writeByte(((a1 & 15) << 4) + ((a2 & 60) >> 2));
+		if(a3 < 64) output.writeByte(((a2 & 3) << 6) + a3);
+		i += 4;
+	}
+	output.position = 0;
+	return output;
+};
+flixel_addons_editors_tiled_TiledLayer.prototype = {
+	map: null
+	,name: null
+	,x: null
+	,y: null
+	,width: null
+	,height: null
+	,opacity: null
+	,visible: null
+	,properties: null
+	,tiles: null
+	,_xmlData: null
+	,getByteArrayData: function() {
+		var result = null;
+		if(this._xmlData.att.resolve("encoding") == "base64") {
+			var chunk = this._xmlData.get_innerData();
+			var compressed = false;
+			result = flixel_addons_editors_tiled_TiledLayer.base64ToByteArray(chunk);
+			result.littleEndian = true;
+			"littleEndian";
+			if(this._xmlData.has.resolve("compression")) {
+				var _g = this._xmlData.att.resolve("compression");
+				switch(_g) {
+				case "zlib":
+					compressed = true;
+					break;
+				default:
+					throw new js__$Boot_HaxeError("TiledLayer - data compression type not supported!");
+				}
+			}
+			if(compressed) throw new js__$Boot_HaxeError("HTML5 doesn't support compressed data! Use Base64 (uncompressed) when you save the map or install the library 'format' and use it");
+		}
+		result.littleEndian = true;
+		"littleEndian";
+		return result;
+	}
+	,resolveTile: function(GlobalTileID) {
+		var tile = new flixel_addons_editors_tiled_TiledTile(GlobalTileID);
+		var tilesetID = tile.tilesetID;
+		var $it0 = this.map.tilesets.iterator();
+		while( $it0.hasNext() ) {
+			var tileset = $it0.next();
+			if(tilesetID >= tileset.firstGID && tilesetID < tileset.firstGID + tileset.numTiles) {
+				this.tiles.push(tile);
+				return tilesetID;
+			}
+		}
+		this.tiles.push(null);
+		return 0;
+	}
+	,resolveCsvTiles: function(csvData) {
+		var buffer = new StringBuf();
+		var rows = csvData.split("\n");
+		var values;
+		var _g = 0;
+		while(_g < rows.length) {
+			var row = rows[_g];
+			++_g;
+			values = row.split(",");
+			var i;
+			var _g1 = 0;
+			while(_g1 < values.length) {
+				var v = values[_g1];
+				++_g1;
+				if(v == "") continue;
+				i = Std.parseInt(v);
+				buffer.add(this.resolveTile(i) + ",");
+			}
+			buffer.b += "\n";
+		}
+		var result = buffer.b;
+		buffer = null;
+		return result;
+	}
+	,csvData: null
+	,get_csvData: function() {
+		if(this.csvData == null) {
+			if(this._xmlData.att.resolve("encoding") == "csv") this.csvData = this._xmlData.get_innerData(); else throw new js__$Boot_HaxeError("Must use CSV encoding in order to get CSV data.");
+		}
+		return this.csvData;
+	}
+	,tileArray: null
+	,get_tileArray: function() {
+		if(this.tileArray == null) {
+			var mapData = this.getByteArrayData();
+			if(mapData == null) throw new js__$Boot_HaxeError("Must use Base64 encoding (with or without zlip compression) in order to get 1D Array.");
+			this.tileArray = [];
+			while(mapData.position < mapData.length) this.tileArray.push(this.resolveTile(mapData.readUnsignedInt()));
+		}
+		return this.tileArray;
+	}
+	,__class__: flixel_addons_editors_tiled_TiledLayer
+	,__properties__: {get_tileArray:"get_tileArray",get_csvData:"get_csvData"}
+};
+var flixel_addons_editors_tiled_TiledMap = function(Data) {
+	this.properties = new flixel_addons_editors_tiled_TiledPropertySet();
+	var source = null;
+	var node = null;
+	if(typeof(Data) == "string") source = new haxe_xml_Fast(Xml.parse(openfl_Assets.getText(Data))); else if(js_Boot.__instanceof(Data,Xml)) source = new haxe_xml_Fast(Data); else throw new js__$Boot_HaxeError("Unknown TMX map format");
+	source = source.node.resolve("map");
+	this.version = source.att.resolve("version");
+	if(this.version == null) this.version = "unknown";
+	this.orientation = source.att.resolve("orientation");
+	if(this.orientation == null) this.orientation = "orthogonal";
+	this.width = Std.parseInt(source.att.resolve("width"));
+	this.height = Std.parseInt(source.att.resolve("height"));
+	this.tileWidth = Std.parseInt(source.att.resolve("tilewidth"));
+	this.tileHeight = Std.parseInt(source.att.resolve("tileheight"));
+	this.fullWidth = this.width * this.tileWidth;
+	this.fullHeight = this.height * this.tileHeight;
+	this.noLoadHash = new haxe_ds_StringMap();
+	this.tilesets = new haxe_ds_StringMap();
+	this.layers = [];
+	this.objectGroups = [];
+	var _g = source.nodes.resolve("properties").iterator();
+	while(_g.head != null) {
+		var node1;
+		node1 = (function($this) {
+			var $r;
+			_g.val = _g.head[0];
+			_g.head = _g.head[1];
+			$r = _g.val;
+			return $r;
+		}(this));
+		this.properties.extend(node1);
+	}
+	var noLoadStr = this.properties.keys.get("noload");
+	if(noLoadStr != null) {
+		var regExp = new EReg("[,;|]","");
+		var noLoadArr = regExp.split(noLoadStr);
+		var _g1 = 0;
+		while(_g1 < noLoadArr.length) {
+			var s = noLoadArr[_g1];
+			++_g1;
+			var key = StringTools.trim(s);
+			this.noLoadHash.set(key,true);
+		}
+	}
+	var name;
+	var _g2 = source.nodes.resolve("tileset").iterator();
+	while(_g2.head != null) {
+		var node2;
+		node2 = (function($this) {
+			var $r;
+			_g2.val = _g2.head[0];
+			_g2.head = _g2.head[1];
+			$r = _g2.val;
+			return $r;
+		}(this));
+		name = node2.att.resolve("name");
+		if(!this.noLoadHash.exists(name)) {
+			var value = new flixel_addons_editors_tiled_TiledTileSet(node2);
+			this.tilesets.set(name,value);
+		}
+	}
+	var _g3 = source.nodes.resolve("layer").iterator();
+	while(_g3.head != null) {
+		var node3;
+		node3 = (function($this) {
+			var $r;
+			_g3.val = _g3.head[0];
+			_g3.head = _g3.head[1];
+			$r = _g3.val;
+			return $r;
+		}(this));
+		name = node3.att.resolve("name");
+		if(!this.noLoadHash.exists(name)) this.layers.push(new flixel_addons_editors_tiled_TiledLayer(node3,this));
+	}
+	var _g4 = source.nodes.resolve("objectgroup").iterator();
+	while(_g4.head != null) {
+		var node4;
+		node4 = (function($this) {
+			var $r;
+			_g4.val = _g4.head[0];
+			_g4.head = _g4.head[1];
+			$r = _g4.val;
+			return $r;
+		}(this));
+		name = node4.att.resolve("name");
+		if(!this.noLoadHash.exists(name)) this.objectGroups.push(new flixel_addons_editors_tiled_TiledObjectGroup(node4,this));
+	}
+};
+$hxClasses["flixel.addons.editors.tiled.TiledMap"] = flixel_addons_editors_tiled_TiledMap;
+flixel_addons_editors_tiled_TiledMap.__name__ = ["flixel","addons","editors","tiled","TiledMap"];
+flixel_addons_editors_tiled_TiledMap.prototype = {
+	version: null
+	,orientation: null
+	,width: null
+	,height: null
+	,tileWidth: null
+	,tileHeight: null
+	,fullWidth: null
+	,fullHeight: null
+	,properties: null
+	,noLoadHash: null
+	,tilesets: null
+	,layers: null
+	,objectGroups: null
+	,getTileSet: function(Name) {
+		return this.tilesets.get(Name);
+	}
+	,getLayer: function(Name) {
+		var i = this.layers.length;
+		while(i > 0) if(this.layers[--i].name == Name) return this.layers[i];
+		return null;
+	}
+	,getObjectGroup: function(Name) {
+		var i = this.objectGroups.length;
+		while(i > 0) if(this.objectGroups[--i].name == Name) return this.objectGroups[i];
+		return null;
+	}
+	,getGidOwner: function(Gid) {
+		var last = null;
+		var set;
+		var $it0 = this.tilesets.iterator();
+		while( $it0.hasNext() ) {
+			var set1 = $it0.next();
+			if(Gid >= set1.firstGID && Gid < set1.firstGID + set1.numTiles) return set1;
+		}
+		return null;
+	}
+	,__class__: flixel_addons_editors_tiled_TiledMap
+};
+var flixel_addons_editors_tiled_TiledObject = function(Source,Parent) {
+	this.xmlData = Source;
+	this.group = Parent;
+	if(Source.has.resolve("name")) this.name = Source.att.resolve("name"); else this.name = "[object]";
+	if(Source.has.resolve("type")) this.type = Source.att.resolve("type"); else this.type = Parent.name;
+	this.x = Std.parseInt(Source.att.resolve("x"));
+	this.y = Std.parseInt(Source.att.resolve("y"));
+	if(Source.has.resolve("width")) this.width = Std.parseInt(Source.att.resolve("width")); else this.width = 0;
+	if(Source.has.resolve("height")) this.height = Std.parseInt(Source.att.resolve("height")); else this.height = 0;
+	if(Source.has.resolve("rotation")) this.angle = Std.parseFloat(Source.att.resolve("rotation")); else this.angle = 0;
+	this.objectType = 0;
+	this.shared = null;
+	this.gid = -1;
+	if(Source.has.resolve("gid") && Source.att.resolve("gid").length != 0) {
+		this.gid = Std.parseInt(Source.att.resolve("gid"));
+		var set;
+		var $it0 = this.group.map.tilesets.iterator();
+		while( $it0.hasNext() ) {
+			var set1 = $it0.next();
+			this.shared = set1.getPropertiesByGid(this.gid);
+			if(this.shared != null) break;
+		}
+		this.objectType = 4;
+	}
+	var node;
+	this.custom = new flixel_addons_editors_tiled_TiledPropertySet();
+	var _g = Source.nodes.resolve("properties").iterator();
+	while(_g.head != null) {
+		var node1;
+		node1 = (function($this) {
+			var $r;
+			_g.val = _g.head[0];
+			_g.head = _g.head[1];
+			$r = _g.val;
+			return $r;
+		}(this));
+		this.custom.extend(node1);
+	}
+	if(Source.hasNode.resolve("ellipse")) this.objectType = 1; else if(Source.hasNode.resolve("polygon")) {
+		this.objectType = 2;
+		this.getPoints(Source.node.resolve("polygon"));
+	} else if(Source.hasNode.resolve("polyline")) {
+		this.objectType = 3;
+		this.getPoints(Source.node.resolve("polyline"));
+	}
+};
+$hxClasses["flixel.addons.editors.tiled.TiledObject"] = flixel_addons_editors_tiled_TiledObject;
+flixel_addons_editors_tiled_TiledObject.__name__ = ["flixel","addons","editors","tiled","TiledObject"];
+flixel_addons_editors_tiled_TiledObject.prototype = {
+	x: null
+	,y: null
+	,width: null
+	,height: null
+	,name: null
+	,type: null
+	,xmlData: null
+	,angle: null
+	,gid: null
+	,custom: null
+	,shared: null
+	,group: null
+	,objectType: null
+	,flippedHorizontally: null
+	,flippedVertically: null
+	,points: null
+	,getPoints: function(Node) {
+		this.points = [];
+		var pointsStr = Node.att.resolve("points").split(" ");
+		var pair;
+		var _g = 0;
+		while(_g < pointsStr.length) {
+			var p = pointsStr[_g];
+			++_g;
+			pair = p.split(",");
+			this.points.push(flixel_util_FlxPoint.get(parseFloat(pair[0]),parseFloat(pair[1])));
+		}
+	}
+	,get_flippedHorizontally: function() {
+		return this.gid & -2147483648;
+	}
+	,get_flippedVertically: function() {
+		return this.gid & 1073741824;
+	}
+	,__class__: flixel_addons_editors_tiled_TiledObject
+	,__properties__: {get_flippedVertically:"get_flippedVertically",get_flippedHorizontally:"get_flippedHorizontally"}
+};
+var flixel_addons_editors_tiled_TiledObjectGroup = function(Source,Parent) {
+	this.properties = new flixel_addons_editors_tiled_TiledPropertySet();
+	this.objects = [];
+	this.map = Parent;
+	this.name = Source.att.resolve("name");
+	if(Source.has.resolve("visible") && Source.att.resolve("visible") == "1") this.visible = true; else this.visible = false;
+	if(Source.has.resolve("opacity")) this.opacity = Std.parseFloat(Source.att.resolve("opacity")); else this.opacity = 0;
+	if(Source.has.resolve("color")) {
+		var hex = Source.att.resolve("color");
+		hex = "0x" + hex.substring(1,hex.length);
+		this.color = Std.parseInt(hex);
+	} else this.color = 0;
+	var node;
+	var _g = Source.nodes.resolve("properties").iterator();
+	while(_g.head != null) {
+		var node1;
+		node1 = (function($this) {
+			var $r;
+			_g.val = _g.head[0];
+			_g.head = _g.head[1];
+			$r = _g.val;
+			return $r;
+		}(this));
+		this.properties.extend(node1);
+	}
+	var _g1 = Source.nodes.resolve("object").iterator();
+	while(_g1.head != null) {
+		var node2;
+		node2 = (function($this) {
+			var $r;
+			_g1.val = _g1.head[0];
+			_g1.head = _g1.head[1];
+			$r = _g1.val;
+			return $r;
+		}(this));
+		this.objects.push(new flixel_addons_editors_tiled_TiledObject(node2,this));
+	}
+};
+$hxClasses["flixel.addons.editors.tiled.TiledObjectGroup"] = flixel_addons_editors_tiled_TiledObjectGroup;
+flixel_addons_editors_tiled_TiledObjectGroup.__name__ = ["flixel","addons","editors","tiled","TiledObjectGroup"];
+flixel_addons_editors_tiled_TiledObjectGroup.prototype = {
+	map: null
+	,name: null
+	,color: null
+	,opacity: null
+	,visible: null
+	,properties: null
+	,objects: null
+	,__class__: flixel_addons_editors_tiled_TiledObjectGroup
+};
+var flixel_addons_editors_tiled_TiledPropertySet = function() {
+	this.keys = new haxe_ds_StringMap();
+};
+$hxClasses["flixel.addons.editors.tiled.TiledPropertySet"] = flixel_addons_editors_tiled_TiledPropertySet;
+flixel_addons_editors_tiled_TiledPropertySet.__name__ = ["flixel","addons","editors","tiled","TiledPropertySet"];
+flixel_addons_editors_tiled_TiledPropertySet.prototype = {
+	get: function(Key) {
+		return this.keys.get(Key);
+	}
+	,contains: function(Key) {
+		return this.keys.exists(Key);
+	}
+	,resolve: function(Name) {
+		return this.keys.get(Name);
+	}
+	,keysIterator: function() {
+		return this.keys.keys();
+	}
+	,extend: function(Source) {
+		var prop;
+		var _g = Source.nodes.resolve("property").iterator();
+		while(_g.head != null) {
+			var prop1;
+			prop1 = (function($this) {
+				var $r;
+				_g.val = _g.head[0];
+				_g.head = _g.head[1];
+				$r = _g.val;
+				return $r;
+			}(this));
+			var key = prop1.att.resolve("name");
+			var value = prop1.att.resolve("value");
+			this.keys.set(key,value);
+		}
+	}
+	,keys: null
+	,__class__: flixel_addons_editors_tiled_TiledPropertySet
+};
+var flixel_addons_editors_tiled_TiledTile = function(OriginalId) {
+	this.isFlipVertically = false;
+	this.isFlipHorizontally = false;
+	this.tileID = OriginalId;
+	this.tilesetID = this.tileID & 536870911;
+	this.rotate = 0;
+	this.resolveFlipAndRotation();
+};
+$hxClasses["flixel.addons.editors.tiled.TiledTile"] = flixel_addons_editors_tiled_TiledTile;
+flixel_addons_editors_tiled_TiledTile.__name__ = ["flixel","addons","editors","tiled","TiledTile"];
+flixel_addons_editors_tiled_TiledTile.prototype = {
+	tileID: null
+	,tilesetID: null
+	,isFlipHorizontally: null
+	,isFlipVertically: null
+	,rotate: null
+	,resolveFlipAndRotation: function() {
+		var flipHorizontal = false;
+		var flipVertical = false;
+		if((this.tileID & -2147483648) != 0) flipHorizontal = true;
+		if((this.tileID & 1073741824) != 0) flipVertical = true;
+		if((this.tileID & 536870912) != 0) {
+			if(flipHorizontal && flipVertical) {
+				this.isFlipHorizontally = true;
+				this.rotate = 2;
+			} else if(flipHorizontal) this.rotate = 1; else if(flipVertical) this.rotate = 2; else {
+				this.isFlipVertically = true;
+				this.rotate = 2;
+			}
+		} else {
+			this.isFlipHorizontally = flipHorizontal;
+			this.isFlipVertically = flipVertical;
+		}
+	}
+	,resolveTilesetID: function() {
+		return this.tileID & 536870911;
+	}
+	,__class__: flixel_addons_editors_tiled_TiledTile
+};
+var flixel_addons_editors_tiled_TiledTileSet = function(data) {
+	var node;
+	var source;
+	this.numTiles = 16777215;
+	this.numRows = this.numCols = 1;
+	if(js_Boot.__instanceof(data,haxe_xml_Fast)) source = data; else if(js_Boot.__instanceof(data,lime_utils_ByteArray)) {
+		source = new haxe_xml_Fast(Xml.parse(data.toString()));
+		source = source.node.resolve("tileset");
+	} else throw new js__$Boot_HaxeError("Unknown TMX tileset format");
+	if(source.has.resolve("firstgid")) this.firstGID = Std.parseInt(source.att.resolve("firstgid")); else this.firstGID = 1;
+	if(source.has.resolve("source")) {
+	} else {
+		var node1 = source.node.resolve("image");
+		this.imageSource = node1.att.resolve("source");
+		var imgWidth = Std.parseInt(node1.att.resolve("width"));
+		var imgHeight = Std.parseInt(node1.att.resolve("height"));
+		this.name = source.att.resolve("name");
+		if(source.has.resolve("tilewidth")) this.tileWidth = Std.parseInt(source.att.resolve("tilewidth"));
+		if(source.has.resolve("tileheight")) this.tileHeight = Std.parseInt(source.att.resolve("tileheight"));
+		if(source.has.resolve("spacing")) this.spacing = Std.parseInt(source.att.resolve("spacing"));
+		if(source.has.resolve("margin")) this.margin = Std.parseInt(source.att.resolve("margin"));
+		this.properties = new flixel_addons_editors_tiled_TiledPropertySet();
+		var _g = source.nodes.resolve("properties").iterator();
+		while(_g.head != null) {
+			var prop;
+			prop = (function($this) {
+				var $r;
+				_g.val = _g.head[0];
+				_g.head = _g.head[1];
+				$r = _g.val;
+				return $r;
+			}(this));
+			this.properties.extend(prop);
+		}
+		this.tileProps = [];
+		var _g1 = source.nodes.resolve("tile").iterator();
+		while(_g1.head != null) {
+			var node2;
+			node2 = (function($this) {
+				var $r;
+				_g1.val = _g1.head[0];
+				_g1.head = _g1.head[1];
+				$r = _g1.val;
+				return $r;
+			}(this));
+			if(!node2.has.resolve("id")) continue;
+			var id = Std.parseInt(node2.att.resolve("id"));
+			this.tileProps[id] = new flixel_addons_editors_tiled_TiledPropertySet();
+			var _g2 = node2.nodes.resolve("properties").iterator();
+			while(_g2.head != null) {
+				var prop1;
+				prop1 = (function($this) {
+					var $r;
+					_g2.val = _g2.head[0];
+					_g2.head = _g2.head[1];
+					$r = _g2.val;
+					return $r;
+				}(this));
+				this.tileProps[id].extend(prop1);
+			}
+		}
+		if(this.tileWidth > 0 && this.tileHeight > 0) {
+			this.numRows = imgWidth / this.tileWidth;
+			this.numCols = imgHeight / this.tileHeight;
+			this.numTiles = this.numRows * this.numCols;
+		}
+	}
+};
+$hxClasses["flixel.addons.editors.tiled.TiledTileSet"] = flixel_addons_editors_tiled_TiledTileSet;
+flixel_addons_editors_tiled_TiledTileSet.__name__ = ["flixel","addons","editors","tiled","TiledTileSet"];
+flixel_addons_editors_tiled_TiledTileSet.prototype = {
+	firstGID: null
+	,name: null
+	,tileWidth: null
+	,tileHeight: null
+	,spacing: null
+	,margin: null
+	,imageSource: null
+	,numTiles: null
+	,numRows: null
+	,numCols: null
+	,properties: null
+	,tileProps: null
+	,hasGid: function(Gid) {
+		return Gid >= this.firstGID && Gid < this.firstGID + this.numTiles;
+	}
+	,fromGid: function(Gid) {
+		return Gid - (this.firstGID - 1);
+	}
+	,toGid: function(ID) {
+		return this.firstGID + ID;
+	}
+	,getPropertiesByGid: function(Gid) {
+		if(this.tileProps != null) return this.tileProps[Gid - this.firstGID];
+		return null;
+	}
+	,getProperties: function(ID) {
+		return this.tileProps[ID];
+	}
+	,getRect: function(ID) {
+		return new openfl_geom_Rectangle(ID % this.numCols * this.tileWidth,ID / this.numCols * this.tileHeight);
+	}
+	,__class__: flixel_addons_editors_tiled_TiledTileSet
+};
 var flixel_animation_FlxBaseAnimation = function(Parent,Name) {
 	this.curIndex = 0;
 	this.parent = Parent;
@@ -19146,6 +19894,12 @@ haxe_CallStack.makeStack = function(s) {
 var haxe_IMap = function() { };
 $hxClasses["haxe.IMap"] = haxe_IMap;
 haxe_IMap.__name__ = ["haxe","IMap"];
+haxe_IMap.prototype = {
+	get: null
+	,set: null
+	,keys: null
+	,__class__: haxe_IMap
+};
 var haxe__$Int64__$_$_$Int64 = function(high,low) {
 	this.high = high;
 	this.low = low;
@@ -19956,6 +20710,154 @@ haxe_crypto_BaseCode.prototype = {
 	}
 	,__class__: haxe_crypto_BaseCode
 };
+var haxe_ds_BalancedTree = function() {
+};
+$hxClasses["haxe.ds.BalancedTree"] = haxe_ds_BalancedTree;
+haxe_ds_BalancedTree.__name__ = ["haxe","ds","BalancedTree"];
+haxe_ds_BalancedTree.prototype = {
+	root: null
+	,set: function(key,value) {
+		this.root = this.setLoop(key,value,this.root);
+	}
+	,get: function(key) {
+		var node = this.root;
+		while(node != null) {
+			var c = this.compare(key,node.key);
+			if(c == 0) return node.value;
+			if(c < 0) node = node.left; else node = node.right;
+		}
+		return null;
+	}
+	,keys: function() {
+		var ret = [];
+		this.keysLoop(this.root,ret);
+		return HxOverrides.iter(ret);
+	}
+	,setLoop: function(k,v,node) {
+		if(node == null) return new haxe_ds_TreeNode(null,k,v,null);
+		var c = this.compare(k,node.key);
+		if(c == 0) return new haxe_ds_TreeNode(node.left,k,v,node.right,node == null?0:node._height); else if(c < 0) {
+			var nl = this.setLoop(k,v,node.left);
+			return this.balance(nl,node.key,node.value,node.right);
+		} else {
+			var nr = this.setLoop(k,v,node.right);
+			return this.balance(node.left,node.key,node.value,nr);
+		}
+	}
+	,keysLoop: function(node,acc) {
+		if(node != null) {
+			this.keysLoop(node.left,acc);
+			acc.push(node.key);
+			this.keysLoop(node.right,acc);
+		}
+	}
+	,balance: function(l,k,v,r) {
+		var hl;
+		if(l == null) hl = 0; else hl = l._height;
+		var hr;
+		if(r == null) hr = 0; else hr = r._height;
+		if(hl > hr + 2) {
+			if((function($this) {
+				var $r;
+				var _this = l.left;
+				$r = _this == null?0:_this._height;
+				return $r;
+			}(this)) >= (function($this) {
+				var $r;
+				var _this1 = l.right;
+				$r = _this1 == null?0:_this1._height;
+				return $r;
+			}(this))) return new haxe_ds_TreeNode(l.left,l.key,l.value,new haxe_ds_TreeNode(l.right,k,v,r)); else return new haxe_ds_TreeNode(new haxe_ds_TreeNode(l.left,l.key,l.value,l.right.left),l.right.key,l.right.value,new haxe_ds_TreeNode(l.right.right,k,v,r));
+		} else if(hr > hl + 2) {
+			if((function($this) {
+				var $r;
+				var _this2 = r.right;
+				$r = _this2 == null?0:_this2._height;
+				return $r;
+			}(this)) > (function($this) {
+				var $r;
+				var _this3 = r.left;
+				$r = _this3 == null?0:_this3._height;
+				return $r;
+			}(this))) return new haxe_ds_TreeNode(new haxe_ds_TreeNode(l,k,v,r.left),r.key,r.value,r.right); else return new haxe_ds_TreeNode(new haxe_ds_TreeNode(l,k,v,r.left.left),r.left.key,r.left.value,new haxe_ds_TreeNode(r.left.right,r.key,r.value,r.right));
+		} else return new haxe_ds_TreeNode(l,k,v,r,(hl > hr?hl:hr) + 1);
+	}
+	,compare: function(k1,k2) {
+		return Reflect.compare(k1,k2);
+	}
+	,__class__: haxe_ds_BalancedTree
+};
+var haxe_ds_TreeNode = function(l,k,v,r,h) {
+	if(h == null) h = -1;
+	this.left = l;
+	this.key = k;
+	this.value = v;
+	this.right = r;
+	if(h == -1) this._height = ((function($this) {
+		var $r;
+		var _this = $this.left;
+		$r = _this == null?0:_this._height;
+		return $r;
+	}(this)) > (function($this) {
+		var $r;
+		var _this1 = $this.right;
+		$r = _this1 == null?0:_this1._height;
+		return $r;
+	}(this))?(function($this) {
+		var $r;
+		var _this2 = $this.left;
+		$r = _this2 == null?0:_this2._height;
+		return $r;
+	}(this)):(function($this) {
+		var $r;
+		var _this3 = $this.right;
+		$r = _this3 == null?0:_this3._height;
+		return $r;
+	}(this))) + 1; else this._height = h;
+};
+$hxClasses["haxe.ds.TreeNode"] = haxe_ds_TreeNode;
+haxe_ds_TreeNode.__name__ = ["haxe","ds","TreeNode"];
+haxe_ds_TreeNode.prototype = {
+	left: null
+	,right: null
+	,key: null
+	,value: null
+	,_height: null
+	,__class__: haxe_ds_TreeNode
+};
+var haxe_ds_EnumValueMap = function() {
+	haxe_ds_BalancedTree.call(this);
+};
+$hxClasses["haxe.ds.EnumValueMap"] = haxe_ds_EnumValueMap;
+haxe_ds_EnumValueMap.__name__ = ["haxe","ds","EnumValueMap"];
+haxe_ds_EnumValueMap.__interfaces__ = [haxe_IMap];
+haxe_ds_EnumValueMap.__super__ = haxe_ds_BalancedTree;
+haxe_ds_EnumValueMap.prototype = $extend(haxe_ds_BalancedTree.prototype,{
+	compare: function(k1,k2) {
+		var d = k1[1] - k2[1];
+		if(d != 0) return d;
+		var p1 = k1.slice(2);
+		var p2 = k2.slice(2);
+		if(p1.length == 0 && p2.length == 0) return 0;
+		return this.compareArgs(p1,p2);
+	}
+	,compareArgs: function(a1,a2) {
+		var ld = a1.length - a2.length;
+		if(ld != 0) return ld;
+		var _g1 = 0;
+		var _g = a1.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			var d = this.compareArg(a1[i],a2[i]);
+			if(d != 0) return d;
+		}
+		return 0;
+	}
+	,compareArg: function(v1,v2) {
+		if(Reflect.isEnumValue(v1) && Reflect.isEnumValue(v2)) return this.compare(v1,v2); else if((v1 instanceof Array) && v1.__enum__ == null && ((v2 instanceof Array) && v2.__enum__ == null)) return this.compareArgs(v1,v2); else return Reflect.compare(v1,v2);
+	}
+	,__class__: haxe_ds_EnumValueMap
+});
 var haxe_ds_IntMap = function() {
 	this.h = { };
 };
@@ -19966,6 +20868,9 @@ haxe_ds_IntMap.prototype = {
 	h: null
 	,set: function(key,value) {
 		this.h[key] = value;
+	}
+	,get: function(key) {
+		return this.h[key];
 	}
 	,remove: function(key) {
 		if(!this.h.hasOwnProperty(key)) return false;
@@ -19994,6 +20899,9 @@ haxe_ds_ObjectMap.prototype = {
 		var id = key.__id__ || (key.__id__ = ++haxe_ds_ObjectMap.count);
 		this.h[id] = value;
 		this.h.__keys__[id] = key;
+	}
+	,get: function(key) {
+		return this.h[key.__id__];
 	}
 	,remove: function(key) {
 		var id = key.__id__;
@@ -20231,6 +21139,457 @@ haxe_io_Path.prototype = {
 		return (this.dir == null?"":this.dir + (this.backslash?"\\":"/")) + this.file + (this.ext == null?"":"." + this.ext);
 	}
 	,__class__: haxe_io_Path
+};
+var haxe_xml__$Fast_NodeAccess = function(x) {
+	this.__x = x;
+};
+$hxClasses["haxe.xml._Fast.NodeAccess"] = haxe_xml__$Fast_NodeAccess;
+haxe_xml__$Fast_NodeAccess.__name__ = ["haxe","xml","_Fast","NodeAccess"];
+haxe_xml__$Fast_NodeAccess.prototype = {
+	__x: null
+	,resolve: function(name) {
+		var x = this.__x.elementsNamed(name).next();
+		if(x == null) {
+			var xname;
+			if(this.__x.nodeType == Xml.Document) xname = "Document"; else xname = this.__x.get_nodeName();
+			throw new js__$Boot_HaxeError(xname + " is missing element " + name);
+		}
+		return new haxe_xml_Fast(x);
+	}
+	,__class__: haxe_xml__$Fast_NodeAccess
+};
+var haxe_xml__$Fast_AttribAccess = function(x) {
+	this.__x = x;
+};
+$hxClasses["haxe.xml._Fast.AttribAccess"] = haxe_xml__$Fast_AttribAccess;
+haxe_xml__$Fast_AttribAccess.__name__ = ["haxe","xml","_Fast","AttribAccess"];
+haxe_xml__$Fast_AttribAccess.prototype = {
+	__x: null
+	,resolve: function(name) {
+		if(this.__x.nodeType == Xml.Document) throw new js__$Boot_HaxeError("Cannot access document attribute " + name);
+		var v = this.__x.get(name);
+		if(v == null) throw new js__$Boot_HaxeError(this.__x.get_nodeName() + " is missing attribute " + name);
+		return v;
+	}
+	,__class__: haxe_xml__$Fast_AttribAccess
+};
+var haxe_xml__$Fast_HasAttribAccess = function(x) {
+	this.__x = x;
+};
+$hxClasses["haxe.xml._Fast.HasAttribAccess"] = haxe_xml__$Fast_HasAttribAccess;
+haxe_xml__$Fast_HasAttribAccess.__name__ = ["haxe","xml","_Fast","HasAttribAccess"];
+haxe_xml__$Fast_HasAttribAccess.prototype = {
+	__x: null
+	,resolve: function(name) {
+		if(this.__x.nodeType == Xml.Document) throw new js__$Boot_HaxeError("Cannot access document attribute " + name);
+		return this.__x.exists(name);
+	}
+	,__class__: haxe_xml__$Fast_HasAttribAccess
+};
+var haxe_xml__$Fast_HasNodeAccess = function(x) {
+	this.__x = x;
+};
+$hxClasses["haxe.xml._Fast.HasNodeAccess"] = haxe_xml__$Fast_HasNodeAccess;
+haxe_xml__$Fast_HasNodeAccess.__name__ = ["haxe","xml","_Fast","HasNodeAccess"];
+haxe_xml__$Fast_HasNodeAccess.prototype = {
+	__x: null
+	,resolve: function(name) {
+		return this.__x.elementsNamed(name).hasNext();
+	}
+	,__class__: haxe_xml__$Fast_HasNodeAccess
+};
+var haxe_xml__$Fast_NodeListAccess = function(x) {
+	this.__x = x;
+};
+$hxClasses["haxe.xml._Fast.NodeListAccess"] = haxe_xml__$Fast_NodeListAccess;
+haxe_xml__$Fast_NodeListAccess.__name__ = ["haxe","xml","_Fast","NodeListAccess"];
+haxe_xml__$Fast_NodeListAccess.prototype = {
+	__x: null
+	,resolve: function(name) {
+		var l = new List();
+		var $it0 = this.__x.elementsNamed(name);
+		while( $it0.hasNext() ) {
+			var x = $it0.next();
+			l.add(new haxe_xml_Fast(x));
+		}
+		return l;
+	}
+	,__class__: haxe_xml__$Fast_NodeListAccess
+};
+var haxe_xml_Fast = function(x) {
+	if(x.nodeType != Xml.Document && x.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Invalid nodeType " + x.nodeType);
+	this.x = x;
+	this.node = new haxe_xml__$Fast_NodeAccess(x);
+	this.nodes = new haxe_xml__$Fast_NodeListAccess(x);
+	this.att = new haxe_xml__$Fast_AttribAccess(x);
+	this.has = new haxe_xml__$Fast_HasAttribAccess(x);
+	this.hasNode = new haxe_xml__$Fast_HasNodeAccess(x);
+};
+$hxClasses["haxe.xml.Fast"] = haxe_xml_Fast;
+haxe_xml_Fast.__name__ = ["haxe","xml","Fast"];
+haxe_xml_Fast.prototype = {
+	x: null
+	,node: null
+	,nodes: null
+	,att: null
+	,has: null
+	,hasNode: null
+	,get_name: function() {
+		if(this.x.nodeType == Xml.Document) return "Document"; else return this.x.get_nodeName();
+	}
+	,get_innerData: function() {
+		var it = this.x.iterator();
+		if(!it.hasNext()) throw new js__$Boot_HaxeError(this.get_name() + " does not have data");
+		var v = it.next();
+		var n = it.next();
+		if(n != null) {
+			if(v.nodeType == Xml.PCData && n.nodeType == Xml.CData && StringTools.trim((function($this) {
+				var $r;
+				if(v.nodeType == Xml.Document || v.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + v.nodeType);
+				$r = v.nodeValue;
+				return $r;
+			}(this))) == "") {
+				var n2 = it.next();
+				if(n2 == null || n2.nodeType == Xml.PCData && StringTools.trim((function($this) {
+					var $r;
+					if(n2.nodeType == Xml.Document || n2.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + n2.nodeType);
+					$r = n2.nodeValue;
+					return $r;
+				}(this))) == "" && it.next() == null) {
+					if(n.nodeType == Xml.Document || n.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + n.nodeType);
+					return n.nodeValue;
+				}
+			}
+			throw new js__$Boot_HaxeError(this.get_name() + " does not only have data");
+		}
+		if(v.nodeType != Xml.PCData && v.nodeType != Xml.CData) throw new js__$Boot_HaxeError(this.get_name() + " does not have data");
+		if(v.nodeType == Xml.Document || v.nodeType == Xml.Element) throw new js__$Boot_HaxeError("Bad node type, unexpected " + v.nodeType);
+		return v.nodeValue;
+	}
+	,__class__: haxe_xml_Fast
+	,__properties__: {get_innerData:"get_innerData",get_name:"get_name"}
+};
+var haxe_xml_Parser = function() { };
+$hxClasses["haxe.xml.Parser"] = haxe_xml_Parser;
+haxe_xml_Parser.__name__ = ["haxe","xml","Parser"];
+haxe_xml_Parser.parse = function(str,strict) {
+	if(strict == null) strict = false;
+	var doc = Xml.createDocument();
+	haxe_xml_Parser.doParse(str,strict,0,doc);
+	return doc;
+};
+haxe_xml_Parser.doParse = function(str,strict,p,parent) {
+	if(p == null) p = 0;
+	var xml = null;
+	var state = 1;
+	var next = 1;
+	var aname = null;
+	var start = 0;
+	var nsubs = 0;
+	var nbrackets = 0;
+	var c = str.charCodeAt(p);
+	var buf = new StringBuf();
+	var escapeNext = 1;
+	var attrValQuote = -1;
+	while(!(c != c)) {
+		switch(state) {
+		case 0:
+			switch(c) {
+			case 10:case 13:case 9:case 32:
+				break;
+			default:
+				state = next;
+				continue;
+			}
+			break;
+		case 1:
+			switch(c) {
+			case 60:
+				state = 0;
+				next = 2;
+				break;
+			default:
+				start = p;
+				state = 13;
+				continue;
+			}
+			break;
+		case 13:
+			if(c == 60) {
+				buf.addSub(str,start,p - start);
+				var child = Xml.createPCData(buf.b);
+				buf = new StringBuf();
+				parent.addChild(child);
+				nsubs++;
+				state = 0;
+				next = 2;
+			} else if(c == 38) {
+				buf.addSub(str,start,p - start);
+				state = 18;
+				escapeNext = 13;
+				start = p + 1;
+			}
+			break;
+		case 17:
+			if(c == 93 && str.charCodeAt(p + 1) == 93 && str.charCodeAt(p + 2) == 62) {
+				var child1 = Xml.createCData(HxOverrides.substr(str,start,p - start));
+				parent.addChild(child1);
+				nsubs++;
+				p += 2;
+				state = 1;
+			}
+			break;
+		case 2:
+			switch(c) {
+			case 33:
+				if(str.charCodeAt(p + 1) == 91) {
+					p += 2;
+					if(HxOverrides.substr(str,p,6).toUpperCase() != "CDATA[") throw new js__$Boot_HaxeError("Expected <![CDATA[");
+					p += 5;
+					state = 17;
+					start = p + 1;
+				} else if(str.charCodeAt(p + 1) == 68 || str.charCodeAt(p + 1) == 100) {
+					if(HxOverrides.substr(str,p + 2,6).toUpperCase() != "OCTYPE") throw new js__$Boot_HaxeError("Expected <!DOCTYPE");
+					p += 8;
+					state = 16;
+					start = p + 1;
+				} else if(str.charCodeAt(p + 1) != 45 || str.charCodeAt(p + 2) != 45) throw new js__$Boot_HaxeError("Expected <!--"); else {
+					p += 2;
+					state = 15;
+					start = p + 1;
+				}
+				break;
+			case 63:
+				state = 14;
+				start = p;
+				break;
+			case 47:
+				if(parent == null) throw new js__$Boot_HaxeError("Expected node name");
+				start = p + 1;
+				state = 0;
+				next = 10;
+				break;
+			default:
+				state = 3;
+				start = p;
+				continue;
+			}
+			break;
+		case 3:
+			if(!(c >= 97 && c <= 122 || c >= 65 && c <= 90 || c >= 48 && c <= 57 || c == 58 || c == 46 || c == 95 || c == 45)) {
+				if(p == start) throw new js__$Boot_HaxeError("Expected node name");
+				xml = Xml.createElement(HxOverrides.substr(str,start,p - start));
+				parent.addChild(xml);
+				nsubs++;
+				state = 0;
+				next = 4;
+				continue;
+			}
+			break;
+		case 4:
+			switch(c) {
+			case 47:
+				state = 11;
+				break;
+			case 62:
+				state = 9;
+				break;
+			default:
+				state = 5;
+				start = p;
+				continue;
+			}
+			break;
+		case 5:
+			if(!(c >= 97 && c <= 122 || c >= 65 && c <= 90 || c >= 48 && c <= 57 || c == 58 || c == 46 || c == 95 || c == 45)) {
+				var tmp;
+				if(start == p) throw new js__$Boot_HaxeError("Expected attribute name");
+				tmp = HxOverrides.substr(str,start,p - start);
+				aname = tmp;
+				if(xml.exists(aname)) throw new js__$Boot_HaxeError("Duplicate attribute");
+				state = 0;
+				next = 6;
+				continue;
+			}
+			break;
+		case 6:
+			switch(c) {
+			case 61:
+				state = 0;
+				next = 7;
+				break;
+			default:
+				throw new js__$Boot_HaxeError("Expected =");
+			}
+			break;
+		case 7:
+			switch(c) {
+			case 34:case 39:
+				buf = new StringBuf();
+				state = 8;
+				start = p + 1;
+				attrValQuote = c;
+				break;
+			default:
+				throw new js__$Boot_HaxeError("Expected \"");
+			}
+			break;
+		case 8:
+			switch(c) {
+			case 38:
+				buf.addSub(str,start,p - start);
+				state = 18;
+				escapeNext = 8;
+				start = p + 1;
+				break;
+			case 62:
+				if(strict) throw new js__$Boot_HaxeError("Invalid unescaped " + String.fromCharCode(c) + " in attribute value"); else if(c == attrValQuote) {
+					buf.addSub(str,start,p - start);
+					var val = buf.b;
+					buf = new StringBuf();
+					xml.set(aname,val);
+					state = 0;
+					next = 4;
+				}
+				break;
+			case 60:
+				if(strict) throw new js__$Boot_HaxeError("Invalid unescaped " + String.fromCharCode(c) + " in attribute value"); else if(c == attrValQuote) {
+					buf.addSub(str,start,p - start);
+					var val1 = buf.b;
+					buf = new StringBuf();
+					xml.set(aname,val1);
+					state = 0;
+					next = 4;
+				}
+				break;
+			default:
+				if(c == attrValQuote) {
+					buf.addSub(str,start,p - start);
+					var val2 = buf.b;
+					buf = new StringBuf();
+					xml.set(aname,val2);
+					state = 0;
+					next = 4;
+				}
+			}
+			break;
+		case 9:
+			p = haxe_xml_Parser.doParse(str,strict,p,xml);
+			start = p;
+			state = 1;
+			break;
+		case 11:
+			switch(c) {
+			case 62:
+				state = 1;
+				break;
+			default:
+				throw new js__$Boot_HaxeError("Expected >");
+			}
+			break;
+		case 12:
+			switch(c) {
+			case 62:
+				if(nsubs == 0) parent.addChild(Xml.createPCData(""));
+				return p;
+			default:
+				throw new js__$Boot_HaxeError("Expected >");
+			}
+			break;
+		case 10:
+			if(!(c >= 97 && c <= 122 || c >= 65 && c <= 90 || c >= 48 && c <= 57 || c == 58 || c == 46 || c == 95 || c == 45)) {
+				if(start == p) throw new js__$Boot_HaxeError("Expected node name");
+				var v = HxOverrides.substr(str,start,p - start);
+				if(v != (function($this) {
+					var $r;
+					if(parent.nodeType != Xml.Element) throw new js__$Boot_HaxeError("Bad node type, expected Element but found " + parent.nodeType);
+					$r = parent.nodeName;
+					return $r;
+				}(this))) throw new js__$Boot_HaxeError("Expected </" + (function($this) {
+					var $r;
+					if(parent.nodeType != Xml.Element) throw "Bad node type, expected Element but found " + parent.nodeType;
+					$r = parent.nodeName;
+					return $r;
+				}(this)) + ">");
+				state = 0;
+				next = 12;
+				continue;
+			}
+			break;
+		case 15:
+			if(c == 45 && str.charCodeAt(p + 1) == 45 && str.charCodeAt(p + 2) == 62) {
+				var xml1 = Xml.createComment(HxOverrides.substr(str,start,p - start));
+				parent.addChild(xml1);
+				nsubs++;
+				p += 2;
+				state = 1;
+			}
+			break;
+		case 16:
+			if(c == 91) nbrackets++; else if(c == 93) nbrackets--; else if(c == 62 && nbrackets == 0) {
+				var xml2 = Xml.createDocType(HxOverrides.substr(str,start,p - start));
+				parent.addChild(xml2);
+				nsubs++;
+				state = 1;
+			}
+			break;
+		case 14:
+			if(c == 63 && str.charCodeAt(p + 1) == 62) {
+				p++;
+				var str1 = HxOverrides.substr(str,start + 1,p - start - 2);
+				var xml3 = Xml.createProcessingInstruction(str1);
+				parent.addChild(xml3);
+				nsubs++;
+				state = 1;
+			}
+			break;
+		case 18:
+			if(c == 59) {
+				var s = HxOverrides.substr(str,start,p - start);
+				if(s.charCodeAt(0) == 35) {
+					var c1;
+					if(s.charCodeAt(1) == 120) c1 = Std.parseInt("0" + HxOverrides.substr(s,1,s.length - 1)); else c1 = Std.parseInt(HxOverrides.substr(s,1,s.length - 1));
+					buf.b += String.fromCharCode(c1);
+				} else if(!haxe_xml_Parser.escapes.exists(s)) {
+					if(strict) throw new js__$Boot_HaxeError("Undefined entity: " + s);
+					buf.b += Std.string("&" + s + ";");
+				} else buf.add(haxe_xml_Parser.escapes.get(s));
+				start = p + 1;
+				state = escapeNext;
+			} else if(!(c >= 97 && c <= 122 || c >= 65 && c <= 90 || c >= 48 && c <= 57 || c == 58 || c == 46 || c == 95 || c == 45) && c != 35) {
+				if(strict) throw new js__$Boot_HaxeError("Invalid character in entity: " + String.fromCharCode(c));
+				buf.b += "&";
+				buf.addSub(str,start,p - start);
+				p--;
+				start = p + 1;
+				state = escapeNext;
+			}
+			break;
+		}
+		c = StringTools.fastCodeAt(str,++p);
+	}
+	if(state == 1) {
+		start = p;
+		state = 13;
+	}
+	if(state == 13) {
+		if(p != start || nsubs == 0) {
+			buf.addSub(str,start,p - start);
+			var xml4 = Xml.createPCData(buf.b);
+			parent.addChild(xml4);
+			nsubs++;
+		}
+		return p;
+	}
+	if(!strict && state == 18 && escapeNext == 13) {
+		buf.b += "&";
+		buf.addSub(str,start,p - start);
+		var xml5 = Xml.createPCData(buf.b);
+		parent.addChild(xml5);
+		nsubs++;
+		return p;
+	}
+	throw new js__$Boot_HaxeError("Unexpected end");
 };
 var js__$Boot_HaxeError = function(val) {
 	Error.call(this);
@@ -36790,6 +38149,56 @@ openfl__$internal_renderer_canvas_CanvasTextField.render = function(textField,re
 		}
 	}
 };
+var openfl__$internal_renderer_canvas_CanvasTilemap = function() { };
+$hxClasses["openfl._internal.renderer.canvas.CanvasTilemap"] = openfl__$internal_renderer_canvas_CanvasTilemap;
+openfl__$internal_renderer_canvas_CanvasTilemap.__name__ = ["openfl","_internal","renderer","canvas","CanvasTilemap"];
+openfl__$internal_renderer_canvas_CanvasTilemap.render = function(tilemap,renderSession) {
+	if(!tilemap.__renderable || tilemap.__worldAlpha <= 0) return;
+	var context = renderSession.context;
+	if(tilemap.__mask != null) renderSession.maskManager.pushMask(tilemap.__mask);
+	context.globalAlpha = tilemap.__worldAlpha;
+	var transform = tilemap.__worldTransform;
+	if(renderSession.roundPixels) context.setTransform(transform.a,transform.b,transform.c,transform.d,transform.tx | 0,transform.ty | 0); else context.setTransform(transform.a,transform.b,transform.c,transform.d,transform.tx,transform.ty);
+	if(!tilemap.smoothing) {
+		context.mozImageSmoothingEnabled = false;
+		context.msImageSmoothingEnabled = false;
+		context.imageSmoothingEnabled = false;
+	}
+	var tileWidth = 0.0;
+	var tileHeight = 0.0;
+	var cacheTileID = -1;
+	var tiles;
+	var count;
+	var tile;
+	var source;
+	var _g = 0;
+	var _g1 = tilemap.__layers;
+	while(_g < _g1.length) {
+		var layer = _g1[_g];
+		++_g;
+		if(layer.__tiles.length == 0 || layer.tileset == null || layer.tileset.bitmapData == null) continue;
+		source = layer.tileset.bitmapData.image.get_src();
+		tiles = layer.__tiles;
+		count = tiles.length;
+		var _g2 = 0;
+		while(_g2 < count) {
+			var i = _g2++;
+			tile = tiles[i];
+			if(tile.id != cacheTileID) {
+				tileWidth = layer.tileset.__rects[tile.id].width;
+				tileHeight = layer.tileset.__rects[tile.id].height;
+				cacheTileID = tile.id;
+			}
+			context.drawImage(source,0,0,tileWidth,tileHeight,tile.x,tile.y,tileWidth,tileHeight);
+		}
+	}
+	if(!tilemap.smoothing) {
+		context.mozImageSmoothingEnabled = true;
+		context.msImageSmoothingEnabled = true;
+		context.imageSmoothingEnabled = true;
+	}
+	if(tilemap.__mask != null) renderSession.maskManager.popMask();
+};
 var openfl__$internal_renderer_console_ConsoleRenderer = function(width,height,ctx) {
 	openfl__$internal_renderer_AbstractRenderer.call(this,width,height);
 	throw new js__$Boot_HaxeError("ConsoleRenderer not supported");
@@ -37055,6 +38464,39 @@ openfl__$internal_renderer_dom_DOMTextField.render = function(textField,renderSe
 		textField.__style = null;
 	}
 };
+var openfl__$internal_renderer_flash_FlashRenderer = function() { };
+$hxClasses["openfl._internal.renderer.flash.FlashRenderer"] = openfl__$internal_renderer_flash_FlashRenderer;
+openfl__$internal_renderer_flash_FlashRenderer.__name__ = ["openfl","_internal","renderer","flash","FlashRenderer"];
+openfl__$internal_renderer_flash_FlashRenderer.instances = null;
+openfl__$internal_renderer_flash_FlashRenderer.register = function(renderObject) {
+	if(openfl__$internal_renderer_flash_FlashRenderer.instances == null) {
+		openfl__$internal_renderer_flash_FlashRenderer.instances = new haxe_ds_ObjectMap();
+		openfl_Lib.current.stage.addEventListener(openfl_events_Event.ENTER_FRAME,openfl__$internal_renderer_flash_FlashRenderer.render);
+	}
+	{
+		openfl__$internal_renderer_flash_FlashRenderer.instances.set(renderObject,true);
+		true;
+	}
+};
+openfl__$internal_renderer_flash_FlashRenderer.render = function(_) {
+	var $it0 = openfl__$internal_renderer_flash_FlashRenderer.instances.keys();
+	while( $it0.hasNext() ) {
+		var instance = $it0.next();
+		instance.__renderFlash();
+	}
+};
+var openfl__$internal_renderer_flash_IDisplayObject = function() { };
+$hxClasses["openfl._internal.renderer.flash.IDisplayObject"] = openfl__$internal_renderer_flash_IDisplayObject;
+openfl__$internal_renderer_flash_IDisplayObject.__name__ = ["openfl","_internal","renderer","flash","IDisplayObject"];
+openfl__$internal_renderer_flash_IDisplayObject.prototype = {
+	__renderFlash: null
+	,__class__: openfl__$internal_renderer_flash_IDisplayObject
+};
+var openfl__$internal_renderer_flash_FlashTilemap = function() { };
+$hxClasses["openfl._internal.renderer.flash.FlashTilemap"] = openfl__$internal_renderer_flash_FlashTilemap;
+openfl__$internal_renderer_flash_FlashTilemap.__name__ = ["openfl","_internal","renderer","flash","FlashTilemap"];
+openfl__$internal_renderer_flash_FlashTilemap.render = function(tilemap) {
+};
 var openfl__$internal_renderer_opengl_GLBitmap = function() { };
 $hxClasses["openfl._internal.renderer.opengl.GLBitmap"] = openfl__$internal_renderer_opengl_GLBitmap;
 openfl__$internal_renderer_opengl_GLBitmap.__name__ = ["openfl","_internal","renderer","opengl","GLBitmap"];
@@ -37245,6 +38687,144 @@ openfl__$internal_renderer_opengl_GLRenderer.prototype = $extend(openfl__$intern
 	}
 	,__class__: openfl__$internal_renderer_opengl_GLRenderer
 });
+var openfl__$internal_renderer_opengl_GLTilemap = function() { };
+$hxClasses["openfl._internal.renderer.opengl.GLTilemap"] = openfl__$internal_renderer_opengl_GLTilemap;
+openfl__$internal_renderer_opengl_GLTilemap.__name__ = ["openfl","_internal","renderer","opengl","GLTilemap"];
+openfl__$internal_renderer_opengl_GLTilemap.glImageUniform = null;
+openfl__$internal_renderer_opengl_GLTilemap.glMatrix = null;
+openfl__$internal_renderer_opengl_GLTilemap.glMatrixUniform = null;
+openfl__$internal_renderer_opengl_GLTilemap.glProgram = null;
+openfl__$internal_renderer_opengl_GLTilemap.glTextureAttribute = null;
+openfl__$internal_renderer_opengl_GLTilemap.glVertexAttribute = null;
+openfl__$internal_renderer_opengl_GLTilemap.initialize = function(gl) {
+	if(openfl__$internal_renderer_opengl_GLTilemap.glProgram == null) {
+		var vertexSource = "\n\t\t\t\t\n\t\t\t\tattribute vec2 aVertexPosition;\n\t\t\t\tattribute vec2 aTexCoord;\n\t\t\t\tuniform mat4 uMatrix;\n\t\t\t\tvarying vec2 vTexCoord;\n\t\t\t\t\n\t\t\t\tvoid main (void) {\n\t\t\t\t\t\n\t\t\t\t\tvTexCoord = aTexCoord;\n\t\t\t\t\tgl_Position = uMatrix * vec4 (aVertexPosition, 0.0, 1.0);\n\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t";
+		var fragmentSource = "precision mediump float;" + "varying vec2 vTexCoord;\n\t\t\t\tuniform sampler2D uImage0;\n\t\t\t\t\n\t\t\t\tvoid main (void) {\n\t\t\t\t\t\n\t\t\t\t\tgl_FragColor = texture2D (uImage0, vTexCoord);\n\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t";
+		openfl__$internal_renderer_opengl_GLTilemap.glProgram = lime_utils_GLUtils.createProgram(vertexSource,fragmentSource);
+		openfl__$internal_renderer_opengl_GLTilemap.glMatrix = lime_math__$Matrix4_Matrix4_$Impl_$.createOrtho(0,800,600,0,-1000,1000);
+		openfl__$internal_renderer_opengl_GLTilemap.glVertexAttribute = gl.getAttribLocation(openfl__$internal_renderer_opengl_GLTilemap.glProgram,"aVertexPosition");
+		openfl__$internal_renderer_opengl_GLTilemap.glTextureAttribute = gl.getAttribLocation(openfl__$internal_renderer_opengl_GLTilemap.glProgram,"aTexCoord");
+		openfl__$internal_renderer_opengl_GLTilemap.glMatrixUniform = gl.getUniformLocation(openfl__$internal_renderer_opengl_GLTilemap.glProgram,"uMatrix");
+		openfl__$internal_renderer_opengl_GLTilemap.glImageUniform = gl.getUniformLocation(openfl__$internal_renderer_opengl_GLTilemap.glProgram,"uImage0");
+	}
+};
+openfl__$internal_renderer_opengl_GLTilemap.render = function(tilemap,renderSession) {
+	if(tilemap.__layers == null || tilemap.__layers.length == 0) return;
+	renderSession.shaderManager.setShader(null);
+	renderSession.blendModeManager.setBlendMode(null);
+	var gl = renderSession.gl;
+	openfl__$internal_renderer_opengl_GLTilemap.initialize(gl);
+	gl.useProgram(openfl__$internal_renderer_opengl_GLTilemap.glProgram);
+	gl.enableVertexAttribArray(openfl__$internal_renderer_opengl_GLTilemap.glVertexAttribute);
+	gl.enableVertexAttribArray(openfl__$internal_renderer_opengl_GLTilemap.glTextureAttribute);
+	gl.activeTexture(gl.TEXTURE0);
+	var tiles;
+	var count;
+	var bufferData;
+	var buffer;
+	var previousLength;
+	var offset;
+	var cacheTileID = -1;
+	var tileWidth = 0;
+	var tileHeight = 0;
+	var tile;
+	var x;
+	var y;
+	var x2;
+	var y2;
+	var _g = 0;
+	var _g1 = tilemap.__layers;
+	while(_g < _g1.length) {
+		var layer = _g1[_g];
+		++_g;
+		if(layer.__tiles.length == 0 || layer.tileset == null || layer.tileset.bitmapData == null) continue;
+		gl.bindTexture(gl.TEXTURE_2D,layer.tileset.bitmapData.getTexture(gl));
+		tiles = layer.__tiles;
+		count = tiles.length;
+		bufferData = layer.__bufferData;
+		if(bufferData == null || bufferData.length != count * 24) {
+			previousLength = 0;
+			if(bufferData == null) {
+				var elements = count * 24;
+				var this1;
+				if(elements != null) this1 = new Float32Array(elements); else this1 = null;
+				bufferData = this1;
+			} else {
+				previousLength = bufferData.length / 24 | 0;
+				var data;
+				var elements1 = count * 24;
+				var this2;
+				if(elements1 != null) this2 = new Float32Array(elements1); else this2 = null;
+				data = this2;
+				var _g3 = 0;
+				var _g2 = bufferData.length;
+				while(_g3 < _g2) {
+					var i = _g3++;
+					data[i] = bufferData[i];
+				}
+				bufferData = data;
+			}
+			var _g21 = previousLength;
+			while(_g21 < count) {
+				var i1 = _g21++;
+				offset = i1 * 24;
+				bufferData[offset + 2] = 0;
+				bufferData[offset + 3] = 0;
+				bufferData[offset + 6] = 1;
+				bufferData[offset + 7] = 0;
+				bufferData[offset + 10] = 0;
+				bufferData[offset + 11] = 1;
+				bufferData[offset + 14] = 0;
+				bufferData[offset + 15] = 1;
+				bufferData[offset + 18] = 1;
+				bufferData[offset + 19] = 0;
+				bufferData[offset + 22] = 1;
+				bufferData[offset + 23] = 1;
+			}
+			layer.__bufferData = bufferData;
+		}
+		if(layer.__buffer == null) layer.__buffer = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER,layer.__buffer);
+		var _g22 = 0;
+		while(_g22 < count) {
+			var i2 = _g22++;
+			tile = tiles[i2];
+			if(tile.id != cacheTileID) {
+				tileWidth = layer.tileset.__rects[tile.id].width | 0;
+				tileHeight = layer.tileset.__rects[tile.id].height | 0;
+				cacheTileID = tile.id;
+			}
+			offset = i2 * 24;
+			x = tile.x;
+			y = tile.y;
+			x2 = x + tileWidth;
+			y2 = y + tileHeight;
+			bufferData[offset] = x;
+			bufferData[offset + 1] = y;
+			bufferData[offset + 4] = x2;
+			bufferData[offset + 5] = y;
+			bufferData[offset + 8] = x;
+			bufferData[offset + 9] = y2;
+			bufferData[offset + 12] = x;
+			bufferData[offset + 13] = y2;
+			bufferData[offset + 16] = x2;
+			bufferData[offset + 17] = y;
+			bufferData[offset + 20] = x2;
+			bufferData[offset + 21] = y2;
+		}
+		gl.bufferData(gl.ARRAY_BUFFER,bufferData,gl.DYNAMIC_DRAW);
+		gl.vertexAttribPointer(openfl__$internal_renderer_opengl_GLTilemap.glVertexAttribute,2,gl.FLOAT,false,16,0);
+		gl.vertexAttribPointer(openfl__$internal_renderer_opengl_GLTilemap.glTextureAttribute,2,gl.FLOAT,false,16,8);
+		gl.uniformMatrix4fv(openfl__$internal_renderer_opengl_GLTilemap.glMatrixUniform,false,openfl__$internal_renderer_opengl_GLTilemap.glMatrix);
+		gl.uniform1i(openfl__$internal_renderer_opengl_GLTilemap.glImageUniform,0);
+		gl.drawArrays(gl.TRIANGLES,0,tiles.length * 6);
+	}
+	gl.bindBuffer(gl.ARRAY_BUFFER,null);
+	gl.bindTexture(gl.TEXTURE_2D,null);
+	gl.disableVertexAttribArray(openfl__$internal_renderer_opengl_GLTilemap.glVertexAttribute);
+	gl.disableVertexAttribArray(openfl__$internal_renderer_opengl_GLTilemap.glTextureAttribute);
+	gl.useProgram(null);
+};
 var openfl__$internal_renderer_opengl_shaders2_Shader = function(gl) {
 	this.uniforms = new haxe_ds_StringMap();
 	this.attributes = new haxe_ds_StringMap();
@@ -43733,6 +45313,163 @@ openfl_display_StageScaleMode.NO_BORDER.__enum__ = openfl_display_StageScaleMode
 openfl_display_StageScaleMode.EXACT_FIT = ["EXACT_FIT",3];
 openfl_display_StageScaleMode.EXACT_FIT.toString = $estr;
 openfl_display_StageScaleMode.EXACT_FIT.__enum__ = openfl_display_StageScaleMode;
+var openfl_display_Tile = function() {
+	this.id = 0;
+	this.x = 0;
+	this.y = 0;
+};
+$hxClasses["openfl.display.Tile"] = openfl_display_Tile;
+openfl_display_Tile.__name__ = ["openfl","display","Tile"];
+openfl_display_Tile.prototype = {
+	id: null
+	,x: null
+	,y: null
+	,__class__: openfl_display_Tile
+};
+var openfl_display_Tilemap = function(width,height) {
+	openfl_display_DisplayObject.call(this);
+	this.set_width(width);
+	this.set_height(height);
+	this.__layers = [];
+	this.numLayers = 0;
+	this.smoothing = true;
+};
+$hxClasses["openfl.display.Tilemap"] = openfl_display_Tilemap;
+openfl_display_Tilemap.__name__ = ["openfl","display","Tilemap"];
+openfl_display_Tilemap.__super__ = openfl_display_DisplayObject;
+openfl_display_Tilemap.prototype = $extend(openfl_display_DisplayObject.prototype,{
+	allowRotation: null
+	,allowScale: null
+	,allowTransform: null
+	,numLayers: null
+	,smoothing: null
+	,__layers: null
+	,addLayer: function(layer) {
+		this.__layers.push(layer);
+		this.numLayers++;
+		return layer;
+	}
+	,addLayerAt: function(layer,index) {
+		HxOverrides.remove(this.__layers,layer);
+		this.__layers.splice(index,0,layer);
+		this.numLayers = this.__layers.length;
+		return layer;
+	}
+	,contains: function(layer) {
+		return HxOverrides.indexOf(this.__layers,layer,0) > -1;
+	}
+	,getLayerAt: function(index) {
+		if(index >= 0 && index < this.numLayers) return this.__layers[index];
+		return null;
+	}
+	,getLayerIndex: function(layer) {
+		var _g1 = 0;
+		var _g = this.__layers.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			if(this.__layers[i] == layer) return i;
+		}
+		return -1;
+	}
+	,removeLayer: function(layer) {
+		HxOverrides.remove(this.__layers,layer);
+		this.numLayers = this.__layers.length;
+		return layer;
+	}
+	,removeLayerAt: function(index) {
+		if(index >= 0 && index < this.numLayers) return this.removeLayer(this.__layers[index]);
+		return null;
+	}
+	,__renderCanvas: function(renderSession) {
+		if(this.stage == null) return;
+		openfl__$internal_renderer_canvas_CanvasTilemap.render(this,renderSession);
+	}
+	,__renderFlash: function() {
+		if(this.stage == null) return;
+		null;
+	}
+	,__renderGL: function(renderSession) {
+		if(this.stage == null) return;
+		openfl__$internal_renderer_opengl_GLTilemap.render(this,renderSession);
+	}
+	,__class__: openfl_display_Tilemap
+});
+var openfl_display_TilemapLayer = function(tileset) {
+	this.tileset = tileset;
+	this.__tiles = [];
+	this.numTiles = 0;
+};
+$hxClasses["openfl.display.TilemapLayer"] = openfl_display_TilemapLayer;
+openfl_display_TilemapLayer.__name__ = ["openfl","display","TilemapLayer"];
+openfl_display_TilemapLayer.prototype = {
+	numTiles: null
+	,tileset: null
+	,__buffer: null
+	,__bufferData: null
+	,__dirty: null
+	,__tiles: null
+	,addTile: function(tile) {
+		this.__tiles.push(tile);
+		this.__dirty = true;
+		this.numTiles++;
+		return tile;
+	}
+	,addTiles: function(tiles) {
+		this.__tiles = this.__tiles.concat(tiles);
+		this.__dirty = true;
+		this.numTiles = this.__tiles.length;
+		return tiles;
+	}
+	,addTileAt: function(tile,index) {
+		HxOverrides.remove(this.__tiles,tile);
+		this.__tiles.splice(index,0,tile);
+		this.__dirty = true;
+		this.numTiles = this.__tiles.length;
+		return tile;
+	}
+	,contains: function(tile) {
+		return HxOverrides.indexOf(this.__tiles,tile,0) > -1;
+	}
+	,getTileAt: function(index) {
+		if(index >= 0 && index < this.numTiles) return this.__tiles[index];
+		return null;
+	}
+	,getTileIndex: function(tile) {
+		var _g1 = 0;
+		var _g = this.__tiles.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			if(this.__tiles[i] == tile) return i;
+		}
+		return -1;
+	}
+	,removeTile: function(tile) {
+		HxOverrides.remove(this.__tiles,tile);
+		this.__dirty = true;
+		this.numTiles = this.__tiles.length;
+		return tile;
+	}
+	,removeTileAt: function(index) {
+		if(index >= 0 && index < this.numTiles) return this.removeTile(this.__tiles[index]);
+		return null;
+	}
+	,__class__: openfl_display_TilemapLayer
+};
+var openfl_display_Tileset = function(bitmapData) {
+	this.bitmapData = bitmapData;
+	this.__rects = [];
+};
+$hxClasses["openfl.display.Tileset"] = openfl_display_Tileset;
+openfl_display_Tileset.__name__ = ["openfl","display","Tileset"];
+openfl_display_Tileset.prototype = {
+	bitmapData: null
+	,__rects: null
+	,addRect: function(rect) {
+		this.__rects.push(rect);
+		return this.__rects.length - 1;
+	}
+	,__class__: openfl_display_Tileset
+};
 var openfl_display_TriangleCulling = $hxClasses["openfl.display.TriangleCulling"] = { __ename__ : ["openfl","display","TriangleCulling"], __constructs__ : ["NEGATIVE","NONE","POSITIVE"] };
 openfl_display_TriangleCulling.NEGATIVE = ["NEGATIVE",0];
 openfl_display_TriangleCulling.NEGATIVE.toString = $estr;
@@ -51177,6 +52914,44 @@ openfl_ui_MultitouchInputMode.TOUCH_POINT.__enum__ = openfl_ui_MultitouchInputMo
 openfl_ui_MultitouchInputMode.GESTURE = ["GESTURE",2];
 openfl_ui_MultitouchInputMode.GESTURE.toString = $estr;
 openfl_ui_MultitouchInputMode.GESTURE.__enum__ = openfl_ui_MultitouchInputMode;
+var openfl_utils__$Dictionary_Dictionary_$Impl_$ = {};
+$hxClasses["openfl.utils._Dictionary.Dictionary_Impl_"] = openfl_utils__$Dictionary_Dictionary_$Impl_$;
+openfl_utils__$Dictionary_Dictionary_$Impl_$.__name__ = ["openfl","utils","_Dictionary","Dictionary_Impl_"];
+openfl_utils__$Dictionary_Dictionary_$Impl_$._new = null;
+openfl_utils__$Dictionary_Dictionary_$Impl_$.get = function(this1,key) {
+	return this1.get(key);
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.set = function(this1,key,value) {
+	this1.set(key,value);
+	return value;
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.iterator = function(this1) {
+	return this1.keys();
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.toStringMap = function(t,weakKeys) {
+	return new haxe_ds_StringMap();
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.toIntMap = function(t,weakKeys) {
+	return new haxe_ds_IntMap();
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.toEnumValueMapMap = function(t,weakKeys) {
+	return new haxe_ds_EnumValueMap();
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.toObjectMap = function(t,weakKeys) {
+	return new haxe_ds_ObjectMap();
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.fromStringMap = function(map) {
+	return map;
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.fromIntMap = function(map) {
+	return map;
+};
+openfl_utils__$Dictionary_Dictionary_$Impl_$.fromObjectMap = function(map) {
+	return map;
+};
+var openfl_utils_Endian = function() { };
+$hxClasses["openfl.utils.Endian"] = openfl_utils_Endian;
+openfl_utils_Endian.__name__ = ["openfl","utils","Endian"];
 function $iterator(o) { if( o instanceof Array ) return function() { return HxOverrides.iter(o); }; return typeof(o.iterator) == 'function' ? $bind(o,o.iterator) : o.iterator; }
 var $_, $fid = 0;
 function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $fid++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = function(){ return f.method.apply(f.scope, arguments); }; f.scope = o; f.method = m; o.hx__closures__[m.__id__] = f; } return f; }
@@ -51252,6 +53027,11 @@ flixel_FlxObject.ANY = 4369;
 flixel_FlxObject._firstSeparateFlxRect = flixel_util_FlxRect.get(null,null,null,null);
 flixel_FlxObject._secondSeparateFlxRect = flixel_util_FlxRect.get(null,null,null,null);
 Xml.Element = 0;
+Xml.PCData = 1;
+Xml.CData = 2;
+Xml.Comment = 3;
+Xml.DocType = 4;
+Xml.ProcessingInstruction = 5;
 Xml.Document = 6;
 flixel_FlxCamera.STYLE_LOCKON = 0;
 flixel_FlxCamera.STYLE_PLATFORMER = 1;
@@ -51314,6 +53094,20 @@ flixel_FlxG.signals = new flixel_system_frontEnds_SignalFrontEnd();
 flixel_FlxG._scaleMode = new flixel_system_scaleModes_RatioScaleMode();
 flixel__$FlxSprite_GraphicDefault.resourceType = "image/png";
 flixel__$FlxSprite_GraphicDefault.resourceName = "__ASSET__:bitmap_flixel__FlxSprite_GraphicDefault";
+flixel_addons_editors_tiled_TiledLayer.BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+flixel_addons_editors_tiled_TiledObject.FLIPPED_VERTICALLY_FLAG = 1073741824;
+flixel_addons_editors_tiled_TiledObject.FLIPPED_HORIZONTALLY_FLAG = -2147483648;
+flixel_addons_editors_tiled_TiledObject.RECTANGLE = 0;
+flixel_addons_editors_tiled_TiledObject.ELLIPSE = 1;
+flixel_addons_editors_tiled_TiledObject.POLYGON = 2;
+flixel_addons_editors_tiled_TiledObject.POLYLINE = 3;
+flixel_addons_editors_tiled_TiledObject.TILE = 4;
+flixel_addons_editors_tiled_TiledTile.FLIPPED_HORIZONTAL = -2147483648;
+flixel_addons_editors_tiled_TiledTile.FLIPPED_VERTICAL = 1073741824;
+flixel_addons_editors_tiled_TiledTile.FLIPPED_DIAGONAL = 536870912;
+flixel_addons_editors_tiled_TiledTile.ROTATE_0 = 0;
+flixel_addons_editors_tiled_TiledTile.ROTATE_90 = 1;
+flixel_addons_editors_tiled_TiledTile.ROTATE_270 = 2;
 flixel_animation_FlxAnimationController.prefixLength = 0;
 flixel_animation_FlxAnimationController.postfixLength = 0;
 flixel_animation_FlxPrerotatedAnimation.PREROTATED = "prerotated_animation";
@@ -51609,6 +53403,17 @@ haxe_io_FPHelper.i64tmp = (function($this) {
 	var $r;
 	var x = new haxe__$Int64__$_$_$Int64(0,0);
 	$r = x;
+	return $r;
+}(this));
+haxe_xml_Parser.escapes = (function($this) {
+	var $r;
+	var h = new haxe_ds_StringMap();
+	if(__map_reserved.lt != null) h.setReserved("lt","<"); else h.h["lt"] = "<";
+	if(__map_reserved.gt != null) h.setReserved("gt",">"); else h.h["gt"] = ">";
+	if(__map_reserved.amp != null) h.setReserved("amp","&"); else h.h["amp"] = "&";
+	if(__map_reserved.quot != null) h.setReserved("quot","\""); else h.h["quot"] = "\"";
+	if(__map_reserved.apos != null) h.setReserved("apos","'"); else h.h["apos"] = "'";
+	$r = h;
 	return $r;
 }(this));
 js_html_compat_Uint8Array.BYTES_PER_ELEMENT = 1;
@@ -52701,5 +54506,7 @@ openfl_ui_Keyboard.LEFTBRACKET = 219;
 openfl_ui_Keyboard.BACKSLASH = 220;
 openfl_ui_Keyboard.RIGHTBRACKET = 221;
 openfl_ui_Keyboard.QUOTE = 222;
+openfl_utils_Endian.BIG_ENDIAN = "bigEndian";
+openfl_utils_Endian.LITTLE_ENDIAN = "littleEndian";
 ApplicationMain.main();
 })(typeof console != "undefined" ? console : {log:function(){}}, typeof window != "undefined" ? window : exports);

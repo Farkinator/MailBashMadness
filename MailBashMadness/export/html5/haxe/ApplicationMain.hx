@@ -34,12 +34,8 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/data/Map 1.tmx");
+		urls.push ("assets/data/Map1.tmx");
 		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("assets/data/Tiles.jpg");
-		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/clearlyacar.png");
@@ -48,6 +44,10 @@ class ApplicationMain {
 		
 		urls.push ("assets/images/images-go-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/Tiles.jpg");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/music/Music With Filter No Sirens.wav");
@@ -154,7 +154,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "335",
+			build: "346",
 			company: "HaxeFlixel",
 			file: "MailBashMadness",
 			fps: 60,
