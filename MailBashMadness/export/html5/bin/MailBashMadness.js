@@ -25,12 +25,20 @@ ApplicationMain.create = function() {
 	var types = [];
 	urls.push("assets/data/data-goes-here.txt");
 	types.push("TEXT");
+	urls.push("assets/data/Map 1.tmx");
+	types.push("TEXT");
+	urls.push("assets/data/Tiles.jpg");
+	types.push("IMAGE");
 	urls.push("assets/images/clearlyacar.png");
 	types.push("IMAGE");
 	urls.push("assets/images/images-go-here.txt");
 	types.push("TEXT");
+	urls.push("assets/music/Music With Filter No Sirens.wav");
+	types.push("SOUND");
 	urls.push("assets/music/music-goes-here.txt");
 	types.push("TEXT");
+	urls.push("assets/music/Whiskey on the Mississippi.mp3");
+	types.push("MUSIC");
 	urls.push("assets/sounds/sounds-go-here.txt");
 	types.push("TEXT");
 	urls.push("assets/To Do List Sound+Music.txt");
@@ -69,7 +77,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "334", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
+	ApplicationMain.config = { build : "335", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -1391,15 +1399,27 @@ var DefaultAssetLibrary = function() {
 	id = "assets/data/data-goes-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
+	id = "assets/data/Map 1.tmx";
+	this.path.set(id,id);
+	this.type.set(id,"TEXT");
+	id = "assets/data/Tiles.jpg";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
 	id = "assets/images/clearlyacar.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/images/images-go-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
+	id = "assets/music/Music With Filter No Sirens.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
 	id = "assets/music/music-goes-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
+	id = "assets/music/Whiskey on the Mississippi.mp3";
+	this.path.set(id,id);
+	this.type.set(id,"MUSIC");
 	id = "assets/sounds/sounds-go-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
@@ -2328,21 +2348,57 @@ flixel_FlxState.prototype = $extend(flixel_group_FlxGroup.prototype,{
 	,__properties__: $extend(flixel_group_FlxGroup.prototype.__properties__,{set_bgColor:"set_bgColor",get_bgColor:"get_bgColor"})
 });
 var MenuState = function(MaxSize) {
+	this.selectNum = 0;
 	flixel_FlxState.call(this,MaxSize);
 };
 $hxClasses["MenuState"] = MenuState;
 MenuState.__name__ = ["MenuState"];
 MenuState.__super__ = flixel_FlxState;
 MenuState.prototype = $extend(flixel_FlxState.prototype,{
-	create: function() {
-		this.add(new flixel_text_FlxText(0,0,100,"Press Space to play"));
+	opt0txt: null
+	,opt1txt: null
+	,selector: null
+	,selectNum: null
+	,create: function() {
+		flixel_FlxG.game._state.set_bgColor(-16777088);
+		this.opt0txt = new flixel_text_FlxText(flixel_FlxG.width / 2 - 100,flixel_FlxG.height / 2 - 100,400,"Start Game");
+		this.opt1txt = new flixel_text_FlxText(flixel_FlxG.width / 2 - 100,flixel_FlxG.height / 2 - 50,400,"Start Without Intro");
+		this.opt0txt.set_size(this.opt1txt.set_size(32));
+		this.add(this.opt0txt);
+		this.add(this.opt1txt);
+		this.selector = new flixel_FlxSprite();
+		this.selector.makeGraphic(10,10,-256);
+		this.selector.set_x(this.opt0txt.x - this.selector.get_width() - 10);
+		this.add(this.selector);
 		flixel_FlxState.prototype.create.call(this);
 	}
 	,destroy: function() {
 		flixel_FlxState.prototype.destroy.call(this);
 	}
 	,update: function() {
-		if(flixel_FlxG.keys.checkStatus(32,flixel_FlxG.keys.justPressed.checkStatus)) flixel_FlxG.switchState(new PlayState());
+		var _g = this.selectNum;
+		switch(_g) {
+		case 0:
+			this.selector.set_y(this.opt0txt.y + 16);
+			break;
+		case 1:
+			this.selector.set_y(this.opt1txt.y + 16);
+			break;
+		}
+		if(flixel_FlxG.keys.checkKeyStatus(["UP","W"],2)) this.selectNum = (this.selectNum - 1 + 2) % 2;
+		if(flixel_FlxG.keys.checkKeyStatus(["DOWN","S"],2)) this.selectNum = (this.selectNum + 1 + 2) % 2;
+		if(flixel_FlxG.keys.checkKeyStatus(["SPACE","ENTER"],2)) {
+			var _g1 = this.selectNum;
+			switch(_g1) {
+			case 0:
+				flixel_FlxG.switchState(new PlayState());
+				break;
+			case 1:
+				flixel_FlxG.switchState(new PlayState());
+				break;
+			}
+			flixel_FlxState.prototype.update.call(this);
+		}
 		flixel_FlxState.prototype.update.call(this);
 	}
 	,__class__: MenuState
@@ -51181,6 +51237,7 @@ openfl_display_DisplayObject.__instanceCount = 0;
 openfl_display_DisplayObject.__worldRenderDirty = 0;
 openfl_display_DisplayObject.__worldTransformDirty = 0;
 openfl_text_Font.__registeredFonts = [];
+MenuState.OPTIONS = 2;
 flixel_util_FlxRect._pool = new flixel_util_FlxPool(flixel_util_FlxRect);
 flixel_FlxObject.SEPARATE_BIAS = 4;
 flixel_FlxObject.LEFT = 1;

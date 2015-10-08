@@ -62,6 +62,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -71,12 +75,20 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/data/Map 1.tmx", __ASSET__assets_data_map_1_tmx);
+		type.set ("assets/data/Map 1.tmx", AssetType.TEXT);
+		className.set ("assets/data/Tiles.jpg", __ASSET__assets_data_tiles_jpg);
+		type.set ("assets/data/Tiles.jpg", AssetType.IMAGE);
 		className.set ("assets/images/clearlyacar.png", __ASSET__assets_images_clearlyacar_png);
 		type.set ("assets/images/clearlyacar.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		className.set ("assets/music/Music With Filter No Sirens.wav", __ASSET__assets_music_music_with_filter_no_sirens_wav);
+		type.set ("assets/music/Music With Filter No Sirens.wav", AssetType.SOUND);
 		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/music/Whiskey on the Mississippi.mp3", __ASSET__assets_music_whiskey_on_the_mississippi_mp3);
+		type.set ("assets/music/Whiskey on the Mississippi.mp3", AssetType.MUSIC);
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		className.set ("assets/To Do List Sound+Music.txt", __ASSET__assets_to_do_list_sound_music_txt);
@@ -102,6 +114,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/data/Map 1.tmx";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "assets/data/Tiles.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/clearlyacar.png";
 		path.set (id, id);
 		
@@ -110,10 +130,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/music/Music With Filter No Sirens.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/music/Whiskey on the Mississippi.mp3";
+		path.set (id, id);
+		
+		type.set (id, AssetType.MUSIC);
 		id = "assets/sounds/sounds-go-here.txt";
 		path.set (id, id);
 		
@@ -167,14 +195,26 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		
+		className.set ("assets/data/Map 1.tmx", __ASSET__assets_data_map_1_tmx);
+		type.set ("assets/data/Map 1.tmx", AssetType.TEXT);
+		
+		className.set ("assets/data/Tiles.jpg", __ASSET__assets_data_tiles_jpg);
+		type.set ("assets/data/Tiles.jpg", AssetType.IMAGE);
+		
 		className.set ("assets/images/clearlyacar.png", __ASSET__assets_images_clearlyacar_png);
 		type.set ("assets/images/clearlyacar.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		
+		className.set ("assets/music/Music With Filter No Sirens.wav", __ASSET__assets_music_music_with_filter_no_sirens_wav);
+		type.set ("assets/music/Music With Filter No Sirens.wav", AssetType.SOUND);
+		
 		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/music/Whiskey on the Mississippi.mp3", __ASSET__assets_music_whiskey_on_the_mississippi_mp3);
+		type.set ("assets/music/Whiskey on the Mississippi.mp3", AssetType.MUSIC);
 		
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
@@ -918,9 +958,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_map_1_tmx extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_tiles_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_clearlyacar_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_music_music_with_filter_no_sirens_wav extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_music_whiskey_on_the_mississippi_mp3 extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_to_do_list_sound_music_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_beep_mp3 extends null { }
@@ -932,6 +976,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
+
+
+
 
 
 
@@ -955,9 +1003,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
+@:file("assets/data/Map 1.tmx") #if display private #end class __ASSET__assets_data_map_1_tmx extends lime.utils.ByteArray {}
+@:image("assets/data/Tiles.jpg") #if display private #end class __ASSET__assets_data_tiles_jpg extends lime.graphics.Image {}
 @:image("assets/images/clearlyacar.png") #if display private #end class __ASSET__assets_images_clearlyacar_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
+@:file("assets/music/Music With Filter No Sirens.wav") #if display private #end class __ASSET__assets_music_music_with_filter_no_sirens_wav extends lime.utils.ByteArray {}
 @:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
+@:file("assets/music/Whiskey on the Mississippi.mp3") #if display private #end class __ASSET__assets_music_whiskey_on_the_mississippi_mp3 extends lime.utils.ByteArray {}
 @:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}
 @:file("assets/To Do List Sound+Music.txt") #if display private #end class __ASSET__assets_to_do_list_sound_music_txt extends lime.utils.ByteArray {}
 @:file("C:/HaxeToolkit/haxe/lib/flixel/3,3,11/assets/sounds/beep.mp3") #if display private #end class __ASSET__assets_sounds_beep_mp3 extends lime.utils.ByteArray {}
