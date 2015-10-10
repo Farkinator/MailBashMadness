@@ -75,7 +75,7 @@ class MenuState extends FlxState
 			switch(selectNum)
 			{
 				case 0:
-					FlxG.switchState(new PlayState());
+					FlxG.switchState(new IntroState());
 				case 1:
 					//Goes straight to the gameplay, no intro story
 					FlxG.switchState(new PlayState()); 

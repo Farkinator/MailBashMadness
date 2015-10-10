@@ -27,11 +27,23 @@ ApplicationMain.create = function() {
 	types.push("TEXT");
 	urls.push("assets/data/Map1.tmx");
 	types.push("TEXT");
+	urls.push("assets/data/Tiles.jpg");
+	types.push("IMAGE");
+	urls.push("assets/images/BatterFrame1.png");
+	types.push("IMAGE");
+	urls.push("assets/images/batterframe2.png");
+	types.push("IMAGE");
+	urls.push("assets/images/batterframe3.png");
+	types.push("IMAGE");
 	urls.push("assets/images/clearlyacar.png");
+	types.push("IMAGE");
+	urls.push("assets/images/CutsceneTest.png");
 	types.push("IMAGE");
 	urls.push("assets/images/images-go-here.txt");
 	types.push("TEXT");
 	urls.push("assets/images/Tiles.jpg");
+	types.push("IMAGE");
+	urls.push("assets/images/TruckSprite.png");
 	types.push("IMAGE");
 	urls.push("assets/music/Music With Filter No Sirens.wav");
 	types.push("SOUND");
@@ -77,7 +89,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "346", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
+	ApplicationMain.config = { build : "358", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -1402,13 +1414,31 @@ var DefaultAssetLibrary = function() {
 	id = "assets/data/Map1.tmx";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
+	id = "assets/data/Tiles.jpg";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/BatterFrame1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/batterframe2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/batterframe3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
 	id = "assets/images/clearlyacar.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/CutsceneTest.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/images/images-go-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
 	id = "assets/images/Tiles.jpg";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/TruckSprite.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/music/Music With Filter No Sirens.wav";
@@ -1847,83 +1877,6 @@ HxOverrides.iter = function(a) {
 		return this.arr[this.cur++];
 	}};
 };
-var Lambda = function() { };
-$hxClasses["Lambda"] = Lambda;
-Lambda.__name__ = ["Lambda"];
-Lambda.array = function(it) {
-	var a = [];
-	var $it0 = $iterator(it)();
-	while( $it0.hasNext() ) {
-		var i = $it0.next();
-		a.push(i);
-	}
-	return a;
-};
-Lambda.count = function(it,pred) {
-	var n = 0;
-	if(pred == null) {
-		var $it0 = $iterator(it)();
-		while( $it0.hasNext() ) {
-			var _ = $it0.next();
-			n++;
-		}
-	} else {
-		var $it1 = $iterator(it)();
-		while( $it1.hasNext() ) {
-			var x = $it1.next();
-			if(pred(x)) n++;
-		}
-	}
-	return n;
-};
-var List = function() {
-	this.length = 0;
-};
-$hxClasses["List"] = List;
-List.__name__ = ["List"];
-List.prototype = {
-	h: null
-	,q: null
-	,length: null
-	,add: function(item) {
-		var x = [item];
-		if(this.h == null) this.h = x; else this.q[1] = x;
-		this.q = x;
-		this.length++;
-	}
-	,pop: function() {
-		if(this.h == null) return null;
-		var x = this.h[0];
-		this.h = this.h[1];
-		if(this.h == null) this.q = null;
-		this.length--;
-		return x;
-	}
-	,iterator: function() {
-		return new _$List_ListIterator(this.h);
-	}
-	,__class__: List
-};
-var _$List_ListIterator = function(head) {
-	this.head = head;
-	this.val = null;
-};
-$hxClasses["_List.ListIterator"] = _$List_ListIterator;
-_$List_ListIterator.__name__ = ["_List","ListIterator"];
-_$List_ListIterator.prototype = {
-	head: null
-	,val: null
-	,hasNext: function() {
-		return this.head != null;
-	}
-	,next: function() {
-		this.val = this.head[0];
-		this.head = this.head[1];
-		return this.val;
-	}
-	,__class__: _$List_ListIterator
-};
-Math.__name__ = ["Math"];
 var flixel_interfaces_IFlxDestroyable = function() { };
 $hxClasses["flixel.interfaces.IFlxDestroyable"] = flixel_interfaces_IFlxDestroyable;
 flixel_interfaces_IFlxDestroyable.__name__ = ["flixel","interfaces","IFlxDestroyable"];
@@ -2373,6 +2326,114 @@ flixel_FlxState.prototype = $extend(flixel_group_FlxGroup.prototype,{
 	,__class__: flixel_FlxState
 	,__properties__: $extend(flixel_group_FlxGroup.prototype.__properties__,{set_bgColor:"set_bgColor",get_bgColor:"get_bgColor"})
 });
+var IntroState = function(MaxSize) {
+	this.totalFrames = 1;
+	this.frame = 0;
+	flixel_FlxState.call(this,MaxSize);
+};
+$hxClasses["IntroState"] = IntroState;
+IntroState.__name__ = ["IntroState"];
+IntroState.__super__ = flixel_FlxState;
+IntroState.prototype = $extend(flixel_FlxState.prototype,{
+	frame: null
+	,totalFrames: null
+	,cutscenes: null
+	,image: null
+	,create: function() {
+		this.cutscenes = ["assets/images/CutsceneTest.png"];
+		this.image = new flixel_FlxSprite(null,null,this.cutscenes[this.frame]);
+		this.add(this.image);
+		flixel_FlxState.prototype.create.call(this);
+	}
+	,destroy: function() {
+		flixel_FlxState.prototype.destroy.call(this);
+	}
+	,update: function() {
+		if(flixel_FlxG.keys.checkKeyStatus(["SPACE","ENTER"],2)) {
+			this.frame++;
+			if(this.frame == this.totalFrames) flixel_FlxG.switchState(new PlayState()); else this.image.loadGraphic(this.cutscenes[this.frame]);
+		}
+		flixel_FlxState.prototype.update.call(this);
+	}
+	,__class__: IntroState
+});
+var Lambda = function() { };
+$hxClasses["Lambda"] = Lambda;
+Lambda.__name__ = ["Lambda"];
+Lambda.array = function(it) {
+	var a = [];
+	var $it0 = $iterator(it)();
+	while( $it0.hasNext() ) {
+		var i = $it0.next();
+		a.push(i);
+	}
+	return a;
+};
+Lambda.count = function(it,pred) {
+	var n = 0;
+	if(pred == null) {
+		var $it0 = $iterator(it)();
+		while( $it0.hasNext() ) {
+			var _ = $it0.next();
+			n++;
+		}
+	} else {
+		var $it1 = $iterator(it)();
+		while( $it1.hasNext() ) {
+			var x = $it1.next();
+			if(pred(x)) n++;
+		}
+	}
+	return n;
+};
+var List = function() {
+	this.length = 0;
+};
+$hxClasses["List"] = List;
+List.__name__ = ["List"];
+List.prototype = {
+	h: null
+	,q: null
+	,length: null
+	,add: function(item) {
+		var x = [item];
+		if(this.h == null) this.h = x; else this.q[1] = x;
+		this.q = x;
+		this.length++;
+	}
+	,pop: function() {
+		if(this.h == null) return null;
+		var x = this.h[0];
+		this.h = this.h[1];
+		if(this.h == null) this.q = null;
+		this.length--;
+		return x;
+	}
+	,iterator: function() {
+		return new _$List_ListIterator(this.h);
+	}
+	,__class__: List
+};
+var _$List_ListIterator = function(head) {
+	this.head = head;
+	this.val = null;
+};
+$hxClasses["_List.ListIterator"] = _$List_ListIterator;
+_$List_ListIterator.__name__ = ["_List","ListIterator"];
+_$List_ListIterator.prototype = {
+	head: null
+	,val: null
+	,hasNext: function() {
+		return this.head != null;
+	}
+	,next: function() {
+		this.val = this.head[0];
+		this.head = this.head[1];
+		return this.val;
+	}
+	,__class__: _$List_ListIterator
+};
+Math.__name__ = ["Math"];
 var MenuState = function(MaxSize) {
 	this.selectNum = 0;
 	flixel_FlxState.call(this,MaxSize);
@@ -2417,7 +2478,7 @@ MenuState.prototype = $extend(flixel_FlxState.prototype,{
 			var _g1 = this.selectNum;
 			switch(_g1) {
 			case 0:
-				flixel_FlxG.switchState(new PlayState());
+				flixel_FlxG.switchState(new IntroState());
 				break;
 			case 1:
 				flixel_FlxG.switchState(new PlayState());

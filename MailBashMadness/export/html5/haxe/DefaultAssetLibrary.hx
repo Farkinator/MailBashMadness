@@ -66,6 +66,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -77,12 +83,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		className.set ("assets/data/Map1.tmx", __ASSET__assets_data_map1_tmx);
 		type.set ("assets/data/Map1.tmx", AssetType.TEXT);
+		className.set ("assets/data/Tiles.jpg", __ASSET__assets_data_tiles_jpg);
+		type.set ("assets/data/Tiles.jpg", AssetType.IMAGE);
+		className.set ("assets/images/BatterFrame1.png", __ASSET__assets_images_batterframe1_png);
+		type.set ("assets/images/BatterFrame1.png", AssetType.IMAGE);
+		className.set ("assets/images/batterframe2.png", __ASSET__assets_images_batterframe2_png);
+		type.set ("assets/images/batterframe2.png", AssetType.IMAGE);
+		className.set ("assets/images/batterframe3.png", __ASSET__assets_images_batterframe3_png);
+		type.set ("assets/images/batterframe3.png", AssetType.IMAGE);
 		className.set ("assets/images/clearlyacar.png", __ASSET__assets_images_clearlyacar_png);
 		type.set ("assets/images/clearlyacar.png", AssetType.IMAGE);
+		className.set ("assets/images/CutsceneTest.png", __ASSET__assets_images_cutscenetest_png);
+		type.set ("assets/images/CutsceneTest.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		className.set ("assets/images/Tiles.jpg", __ASSET__assets_images_tiles_jpg);
 		type.set ("assets/images/Tiles.jpg", AssetType.IMAGE);
+		className.set ("assets/images/TruckSprite.png", __ASSET__assets_images_trucksprite_png);
+		type.set ("assets/images/TruckSprite.png", AssetType.IMAGE);
 		className.set ("assets/music/Music With Filter No Sirens.wav", __ASSET__assets_music_music_with_filter_no_sirens_wav);
 		type.set ("assets/music/Music With Filter No Sirens.wav", AssetType.SOUND);
 		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
@@ -118,7 +136,27 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/data/Tiles.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/BatterFrame1.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/batterframe2.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/batterframe3.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/clearlyacar.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/CutsceneTest.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -127,6 +165,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/Tiles.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/TruckSprite.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -198,14 +240,32 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/data/Map1.tmx", __ASSET__assets_data_map1_tmx);
 		type.set ("assets/data/Map1.tmx", AssetType.TEXT);
 		
+		className.set ("assets/data/Tiles.jpg", __ASSET__assets_data_tiles_jpg);
+		type.set ("assets/data/Tiles.jpg", AssetType.IMAGE);
+		
+		className.set ("assets/images/BatterFrame1.png", __ASSET__assets_images_batterframe1_png);
+		type.set ("assets/images/BatterFrame1.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/batterframe2.png", __ASSET__assets_images_batterframe2_png);
+		type.set ("assets/images/batterframe2.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/batterframe3.png", __ASSET__assets_images_batterframe3_png);
+		type.set ("assets/images/batterframe3.png", AssetType.IMAGE);
+		
 		className.set ("assets/images/clearlyacar.png", __ASSET__assets_images_clearlyacar_png);
 		type.set ("assets/images/clearlyacar.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/CutsceneTest.png", __ASSET__assets_images_cutscenetest_png);
+		type.set ("assets/images/CutsceneTest.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		
 		className.set ("assets/images/Tiles.jpg", __ASSET__assets_images_tiles_jpg);
 		type.set ("assets/images/Tiles.jpg", AssetType.IMAGE);
+		
+		className.set ("assets/images/TruckSprite.png", __ASSET__assets_images_trucksprite_png);
+		type.set ("assets/images/TruckSprite.png", AssetType.IMAGE);
 		
 		className.set ("assets/music/Music With Filter No Sirens.wav", __ASSET__assets_music_music_with_filter_no_sirens_wav);
 		type.set ("assets/music/Music With Filter No Sirens.wav", AssetType.SOUND);
@@ -959,9 +1019,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_data_map1_tmx extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_tiles_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_batterframe1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_batterframe2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_batterframe3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_clearlyacar_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_cutscenetest_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_tiles_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_trucksprite_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_with_filter_no_sirens_wav extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_music_whiskey_on_the_mississippi_mp3 extends null { }
@@ -991,6 +1057,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
@@ -1004,9 +1076,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
 @:file("assets/data/Map1.tmx") #if display private #end class __ASSET__assets_data_map1_tmx extends lime.utils.ByteArray {}
+@:image("assets/data/Tiles.jpg") #if display private #end class __ASSET__assets_data_tiles_jpg extends lime.graphics.Image {}
+@:image("assets/images/BatterFrame1.png") #if display private #end class __ASSET__assets_images_batterframe1_png extends lime.graphics.Image {}
+@:image("assets/images/batterframe2.png") #if display private #end class __ASSET__assets_images_batterframe2_png extends lime.graphics.Image {}
+@:image("assets/images/batterframe3.png") #if display private #end class __ASSET__assets_images_batterframe3_png extends lime.graphics.Image {}
 @:image("assets/images/clearlyacar.png") #if display private #end class __ASSET__assets_images_clearlyacar_png extends lime.graphics.Image {}
+@:image("assets/images/CutsceneTest.png") #if display private #end class __ASSET__assets_images_cutscenetest_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
 @:image("assets/images/Tiles.jpg") #if display private #end class __ASSET__assets_images_tiles_jpg extends lime.graphics.Image {}
+@:image("assets/images/TruckSprite.png") #if display private #end class __ASSET__assets_images_trucksprite_png extends lime.graphics.Image {}
 @:file("assets/music/Music With Filter No Sirens.wav") #if display private #end class __ASSET__assets_music_music_with_filter_no_sirens_wav extends lime.utils.ByteArray {}
 @:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
 @:file("assets/music/Whiskey on the Mississippi.mp3") #if display private #end class __ASSET__assets_music_whiskey_on_the_mississippi_mp3 extends lime.utils.ByteArray {}
