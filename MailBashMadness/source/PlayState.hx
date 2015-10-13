@@ -21,9 +21,7 @@ class PlayState extends FlxState
 	{
 		add(player = new Player(200, 200, this));
 
-		FlxG.camera.follow(player, FlxCamera.STYLE_TOPDOWN, 1);
-		// FlxG.camera.setSize(1024, 768);
-
+		FlxG.camera.follow(player, FlxCamera.STYLE_LOCKON, 1);
 		super.create();
 	}
 	

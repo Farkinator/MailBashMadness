@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"angular",
+				"angularDrag	Float"
+			],
+			[
 				"swi",
 				"switchState(...)	Void"
 			],
@@ -239,24 +243,15 @@
 			"file": "source/PlayState.hx",
 			"settings":
 			{
-				"buffer_size": 773,
+				"buffer_size": 946,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/Units/Player.hx",
-			"settings":
-			{
-				"buffer_size": 634,
-				"line_ending": "Windows",
-				"name": "package;"
 			}
 		},
 		{
 			"file": "source/MenuState.hx",
 			"settings":
 			{
-				"buffer_size": 899,
+				"buffer_size": 902,
 				"line_ending": "Windows"
 			}
 		},
@@ -264,8 +259,24 @@
 			"file": "source/Main.hx",
 			"settings":
 			{
-				"buffer_size": 1956,
+				"buffer_size": 1961,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/Player.hx",
+			"settings":
+			{
+				"buffer_size": 8075,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Farkinator/Downloads/hw3.c",
+			"settings":
+			{
+				"buffer_size": 6086,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -305,6 +316,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Farkinator/Documents/GameDevI/haxeflixel/MailBashMadness/source/Units/Player.hx",
 		"/C/Users/Farkinator/Downloads/derp/derp/source/MenuState.hx",
 		"/C/Users/Farkinator/Documents/OpSys/p01/processes.txt",
 		"/C/Users/Farkinator/Documents/sample_get_live_leagues.json",
@@ -494,7 +506,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -502,7 +514,35 @@
 					"file": "source/PlayState.hx",
 					"settings":
 					{
-						"buffer_size": 773,
+						"buffer_size": 946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								812,
+								812
+							]
+						],
+						"settings":
+						{
+							"haxe-build-id": 0,
+							"syntax": "Packages/Haxe/Haxe.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/MenuState.hx",
+					"settings":
+					{
+						"buffer_size": 902,
 						"regions":
 						{
 						},
@@ -526,48 +566,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "source/Units/Player.hx",
-					"settings":
-					{
-						"buffer_size": 634,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								628,
-								628
-							]
-						],
-						"settings":
-						{
-							"auto_name": "package;",
-							"haxe-build-id": 0,
-							"syntax": "Packages/Haxe/Haxe.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "source/MenuState.hx",
+					"file": "source/Main.hx",
 					"settings":
 					{
-						"buffer_size": 899,
+						"buffer_size": 1961,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								871,
-								871
+								1037,
+								1037
 							]
 						],
 						"settings":
@@ -577,25 +588,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "source/Main.hx",
+					"file": "source/Player.hx",
 					"settings":
 					{
-						"buffer_size": 1956,
+						"buffer_size": 8075,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1879,
-								1879
+								1119,
+								1119
 							]
 						],
 						"settings":
@@ -605,7 +616,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 170.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Farkinator/Downloads/hw3.c",
+					"settings":
+					{
+						"buffer_size": 6086,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 653.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -11,20 +11,21 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.misc.NumTween;
 import flixel.tweens.FlxEase;
 import flixel.tweens.misc.VarTween;
+import flixel.addons.display.FlxNestedSprite;
 
 class Player extends FlxSprite{
 	//+--------------------------------------------+
 	//|            CAR TUNING VALUES               |
 	//+--------------------------------------------+
 
-	public var MAX_SPEED:Int = 800;
+	public var MAX_SPEED:Int = 10000;
 	// The pick-up speed of the car. NOTE THAT THIS IS NOT A VECTOR, IT IS A SCALAR.
-	public var ACCEL:Int = 1000;
-	public var DECEL:Float = 1000;
+	public var ACCEL:Int = 10000;
+	public var DECEL:Float = 10000;
 	// A tuning number for how tightly our car turns. The bigger, the tighter the turn
-	public var TURNTIGHTNESS:Float = 5;
+	public var TURNTIGHTNESS:Float = 4;
 	//If we're traveling basically nowhere, this will be the minimum turn radius.
-	public var MIN_TURN_RADIUS:Float = 100.0;
+	public var MIN_TURN_RADIUS:Float = 1200.0;
 
 	//+--------------------------------------------+
 	//|            BAT TUNING VALUES               |
@@ -69,13 +70,22 @@ class Player extends FlxSprite{
 	//Whether or not we are charging the bat.
 	public var charging:Bool = false;
 	public var chargeTimeRemaining:Float = 0;
+
+	public var batter:FlxSprite;
+	public var batterPoint:FlxPoint = new FlxPoint(300, 400);
+	public var car_midpt:FlxPoint = new FlxPoint(0, 0);
+
 	public function new(X:Float=0, Y:Float=0, Parent:PlayState){
 		super(X, Y);
-		loadGraphic("assets/images/clearlyacar.png", true, 60, 80);
+		loadGraphic("assets/images/fix_attempt.png");
+		width += 1000;
+		batter = new FlxSprite();
+		batter.loadGraphic("assets/images/BatterFrame1.png");
+		batter.scale.set(.6, .6);
+		stamp(batter, 260, 330);
 		drag.set(MAX_SPEED * 8, MAX_SPEED * 8);
-		angularDrag = 1200;
+		angularDrag = 1600;
 		// maxVelocity.set(MAX_SPEED, MAX_SPEED);
-
 		parent = Parent;
 		updateHitbox();
 		wheelAngle = 0;
@@ -86,13 +96,14 @@ class Player extends FlxSprite{
 	}
 
 	public override function update():Void{
+
 		var accel_modifier:Float = 0;
 		var deceleration:Float = DECEL;
 		var accel:Float = ACCEL;
 		var max_speed:Float = MAX_SPEED;
 		var handling:Float = 1;
 		var a_c:Float = 0;
-
+		angularDrag = 1200;
 
 		//I really want analog input.
 		if(FlxG.keys.anyPressed(["A"])){
@@ -100,13 +111,15 @@ class Player extends FlxSprite{
 			accel_modifier = -1;
 		} else if(FlxG.keys.anyPressed(["D"])){
 			accel_modifier = 1;
+			angle += 1;
 		} else {
 			accel_modifier = 0;
 		}
 		if(FlxG.keys.pressed.SPACE){
-			max_speed = MAX_SPEED/2;
+			max_speed = (3*MAX_SPEED)/4;
 			deceleration = DECEL /2;
 			handling *= 2.5;
+			angularDrag *= 2;
 		}
 		acceleration.set(0);
 		//Treat the car like a trike, treat the back wheels as pivot points

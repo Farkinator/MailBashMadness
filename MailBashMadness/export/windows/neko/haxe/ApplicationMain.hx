@@ -499,7 +499,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "396",
+			build: "515",
 			company: "HaxeFlixel",
 			file: "MailBashMadness",
 			fps: 60,
