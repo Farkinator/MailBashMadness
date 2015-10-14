@@ -28,7 +28,8 @@ class PlayState extends FlxState
 		//Tiled Vodo Magic
 		var tiledLevel:TiledMap = new TiledMap("assets/data/Map1.tmx");
 		
-		var tileSize = tiledLevel.tileWidth;
+		var tileWidth = tiledLevel.tileWidth;
+		var tileHeight = tiledLevel.tileHeight;
 		var mapW = tiledLevel.width;
 		var mapH = tiledLevel.height;
 		
@@ -44,16 +45,41 @@ class PlayState extends FlxState
 			level.widthInTiles = mapW;
 			level.heightInTiles = mapH;
 			
-			level.loadMap(layer.tileArray, tilesheetPath, tileSize, tileSize, FlxTilemap.OFF, 1);
+			var tileGID:Int = getStartGid(tiledLevel, tileSheetName);
+			
+			level.loadMap(layer.tileArray, tilesheetPath, tileWidth, tileHeight, FlxTilemap.OFF, tileGID);
 			add(level);
 		}
 		add(player = new Player(200, 200, this));
 	}
 	
+	function getStartGid (tiledLevel:TiledMap, tilesheetName:String):Int
+    {
+        // This function gets the starting GID of a tilesheet
+ 
+        // Note: "0" is empty tile, so default to a non-empty "1" value.
+        var tileGID:Int = 1;
+ 
+        for (tileset in tiledLevel.tilesets)
+        {
+            // We need to search the tileset's firstGID -- to do that,
+            // we compare the tilesheet paths. If it matches, we
+            // extract the firstGID value.
+            var tilesheetPath:Path = new Path(tileset.imageSource);
+            var thisTilesheetName = tilesheetPath.file + "." + tilesheetPath.ext;
+            if (thisTilesheetName == tilesheetName)
+            {
+                tileGID = tileset.firstGID;
+            }
+        }
+ 
+        return tileGID;
+    }
 	/**
 	 * Function that is called when this state is destroyed - you might want to 
 	 * consider setting all objects this state uses to null to help garbage collection.
 	 */
+
 	override public function destroy():Void
 	{
 		super.destroy();

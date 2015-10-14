@@ -72,6 +72,62 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -81,8 +137,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/data/HouseTile.png", __ASSET__assets_data_housetile_png);
+		type.set ("assets/data/HouseTile.png", AssetType.IMAGE);
 		className.set ("assets/data/Map1.tmx", __ASSET__assets_data_map1_tmx);
 		type.set ("assets/data/Map1.tmx", AssetType.TEXT);
+		className.set ("assets/data/RoadLawnTiles.jpg", __ASSET__assets_data_roadlawntiles_jpg);
+		type.set ("assets/data/RoadLawnTiles.jpg", AssetType.IMAGE);
 		className.set ("assets/data/Tiles.jpg", __ASSET__assets_data_tiles_jpg);
 		type.set ("assets/data/Tiles.jpg", AssetType.IMAGE);
 		className.set ("assets/images/BatterFrame1.png", __ASSET__assets_images_batterframe1_png);
@@ -91,14 +151,94 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/batterframe2.png", AssetType.IMAGE);
 		className.set ("assets/images/batterframe3.png", __ASSET__assets_images_batterframe3_png);
 		type.set ("assets/images/batterframe3.png", AssetType.IMAGE);
+		className.set ("assets/images/batterspritesheet.jpg", __ASSET__assets_images_batterspritesheet_jpg);
+		type.set ("assets/images/batterspritesheet.jpg", AssetType.IMAGE);
 		className.set ("assets/images/clearlyacar.png", __ASSET__assets_images_clearlyacar_png);
 		type.set ("assets/images/clearlyacar.png", AssetType.IMAGE);
 		className.set ("assets/images/CutsceneTest.png", __ASSET__assets_images_cutscenetest_png);
 		type.set ("assets/images/CutsceneTest.png", AssetType.IMAGE);
+		className.set ("assets/images/house1.png", __ASSET__assets_images_house1_png);
+		type.set ("assets/images/house1.png", AssetType.IMAGE);
+		className.set ("assets/images/house1up (2).png", __ASSET__assets_images_house1up__2__png);
+		type.set ("assets/images/house1up (2).png", AssetType.IMAGE);
+		className.set ("assets/images/house1up.png", __ASSET__assets_images_house1up_png);
+		type.set ("assets/images/house1up.png", AssetType.IMAGE);
+		className.set ("assets/images/house2.png", __ASSET__assets_images_house2_png);
+		type.set ("assets/images/house2.png", AssetType.IMAGE);
+		className.set ("assets/images/house2right.png", __ASSET__assets_images_house2right_png);
+		type.set ("assets/images/house2right.png", AssetType.IMAGE);
+		className.set ("assets/images/HouseTile.png", __ASSET__assets_images_housetile_png);
+		type.set ("assets/images/HouseTile.png", AssetType.IMAGE);
+		className.set ("assets/images/HouseTiles.png", __ASSET__assets_images_housetiles_png);
+		type.set ("assets/images/HouseTiles.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		className.set ("assets/images/Lawn/bot.png", __ASSET__assets_images_lawn_bot_png);
+		type.set ("assets/images/Lawn/bot.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/botandleft.png", __ASSET__assets_images_lawn_botandleft_png);
+		type.set ("assets/images/Lawn/botandleft.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/botandright.png", __ASSET__assets_images_lawn_botandright_png);
+		type.set ("assets/images/Lawn/botandright.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/botleftdiag.png", __ASSET__assets_images_lawn_botleftdiag_png);
+		type.set ("assets/images/Lawn/botleftdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/botrightdiag.png", __ASSET__assets_images_lawn_botrightdiag_png);
+		type.set ("assets/images/Lawn/botrightdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/grass.png", __ASSET__assets_images_lawn_grass_png);
+		type.set ("assets/images/Lawn/grass.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/leftvert.png", __ASSET__assets_images_lawn_leftvert_png);
+		type.set ("assets/images/Lawn/leftvert.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/rightvert.png", __ASSET__assets_images_lawn_rightvert_png);
+		type.set ("assets/images/Lawn/rightvert.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/top.png", __ASSET__assets_images_lawn_top_png);
+		type.set ("assets/images/Lawn/top.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/topandleft.png", __ASSET__assets_images_lawn_topandleft_png);
+		type.set ("assets/images/Lawn/topandleft.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/topandright.png", __ASSET__assets_images_lawn_topandright_png);
+		type.set ("assets/images/Lawn/topandright.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/topleftdiag.png", __ASSET__assets_images_lawn_topleftdiag_png);
+		type.set ("assets/images/Lawn/topleftdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/Lawn/toprightdiag.png", __ASSET__assets_images_lawn_toprightdiag_png);
+		type.set ("assets/images/Lawn/toprightdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/mailboxframe1.png", __ASSET__assets_images_mailboxframe1_png);
+		type.set ("assets/images/mailboxframe1.png", AssetType.IMAGE);
+		className.set ("assets/images/mailboxframe2.png", __ASSET__assets_images_mailboxframe2_png);
+		type.set ("assets/images/mailboxframe2.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/backwardDiagonal.png", __ASSET__assets_images_road_backwarddiagonal_png);
+		type.set ("assets/images/Road/backwardDiagonal.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/bottomleftdiag.png", __ASSET__assets_images_road_bottomleftdiag_png);
+		type.set ("assets/images/Road/bottomleftdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/bottomrightdiag.png", __ASSET__assets_images_road_bottomrightdiag_png);
+		type.set ("assets/images/Road/bottomrightdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/forwardDiagonal.png", __ASSET__assets_images_road_forwarddiagonal_png);
+		type.set ("assets/images/Road/forwardDiagonal.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/horizBot.png", __ASSET__assets_images_road_horizbot_png);
+		type.set ("assets/images/Road/horizBot.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/horizMid.png", __ASSET__assets_images_road_horizmid_png);
+		type.set ("assets/images/Road/horizMid.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/horizTop.png", __ASSET__assets_images_road_horiztop_png);
+		type.set ("assets/images/Road/horizTop.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/Intersection.png", __ASSET__assets_images_road_intersection_png);
+		type.set ("assets/images/Road/Intersection.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/road.sai", __ASSET__assets_images_road_road_sai);
+		type.set ("assets/images/Road/road.sai", AssetType.TEXT);
+		className.set ("assets/images/Road/topleftdiag.png", __ASSET__assets_images_road_topleftdiag_png);
+		type.set ("assets/images/Road/topleftdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/toprightdiag.png", __ASSET__assets_images_road_toprightdiag_png);
+		type.set ("assets/images/Road/toprightdiag.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/VertLeft.png", __ASSET__assets_images_road_vertleft_png);
+		type.set ("assets/images/Road/VertLeft.png", AssetType.IMAGE);
+		className.set ("assets/images/Road/VertRight.png", __ASSET__assets_images_road_vertright_png);
+		type.set ("assets/images/Road/VertRight.png", AssetType.IMAGE);
+		className.set ("assets/images/RoadLawnTiles.jpg", __ASSET__assets_images_roadlawntiles_jpg);
+		type.set ("assets/images/RoadLawnTiles.jpg", AssetType.IMAGE);
+		className.set ("assets/images/stopsign.png", __ASSET__assets_images_stopsign_png);
+		type.set ("assets/images/stopsign.png", AssetType.IMAGE);
 		className.set ("assets/images/Tiles.jpg", __ASSET__assets_images_tiles_jpg);
 		type.set ("assets/images/Tiles.jpg", AssetType.IMAGE);
+		className.set ("assets/images/tree1.png", __ASSET__assets_images_tree1_png);
+		type.set ("assets/images/tree1.png", AssetType.IMAGE);
+		className.set ("assets/images/tree2.png", __ASSET__assets_images_tree2_png);
+		type.set ("assets/images/tree2.png", AssetType.IMAGE);
 		className.set ("assets/images/TruckSprite.png", __ASSET__assets_images_trucksprite_png);
 		type.set ("assets/images/TruckSprite.png", AssetType.IMAGE);
 		className.set ("assets/music/Music With Filter No Sirens.wav", __ASSET__assets_music_music_with_filter_no_sirens_wav);
@@ -107,8 +247,36 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
 		className.set ("assets/music/Whiskey on the Mississippi.mp3", __ASSET__assets_music_whiskey_on_the_mississippi_mp3);
 		type.set ("assets/music/Whiskey on the Mississippi.mp3", AssetType.MUSIC);
+		className.set ("assets/sounds/Mailbox Bat Smack.wav", __ASSET__assets_sounds_mailbox_bat_smack_wav);
+		type.set ("assets/sounds/Mailbox Bat Smack.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Mailbox Hitting Mailbox A.wav", __ASSET__assets_sounds_mailbox_hitting_mailbox_a_wav);
+		type.set ("assets/sounds/Mailbox Hitting Mailbox A.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Mailbox Hitting Mailbox B.wav", __ASSET__assets_sounds_mailbox_hitting_mailbox_b_wav);
+		type.set ("assets/sounds/Mailbox Hitting Mailbox B.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Mailbox Thud.wav", __ASSET__assets_sounds_mailbox_thud_wav);
+		type.set ("assets/sounds/Mailbox Thud.wav", AssetType.SOUND);
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
+		className.set ("assets/sounds/Truck Engine Loop.wav", __ASSET__assets_sounds_truck_engine_loop_wav);
+		type.set ("assets/sounds/Truck Engine Loop.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Engine Rev Up.wav", __ASSET__assets_sounds_truck_engine_rev_up_wav);
+		type.set ("assets/sounds/Truck Engine Rev Up.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Engine Slow Down.wav", __ASSET__assets_sounds_truck_engine_slow_down_wav);
+		type.set ("assets/sounds/Truck Engine Slow Down.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Engine Slow Rev Up.wav", __ASSET__assets_sounds_truck_engine_slow_rev_up_wav);
+		type.set ("assets/sounds/Truck Engine Slow Rev Up.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Fender Rev Loop Movement.wav", __ASSET__assets_sounds_truck_fender_rev_loop_movement_wav);
+		type.set ("assets/sounds/Truck Fender Rev Loop Movement.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Fender Rev Loop Slowing Down.wav", __ASSET__assets_sounds_truck_fender_rev_loop_slowing_down_wav);
+		type.set ("assets/sounds/Truck Fender Rev Loop Slowing Down.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Fender Rev To Constant Movement.wav", __ASSET__assets_sounds_truck_fender_rev_to_constant_movement_wav);
+		type.set ("assets/sounds/Truck Fender Rev To Constant Movement.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Fender Rev.wav", __ASSET__assets_sounds_truck_fender_rev_wav);
+		type.set ("assets/sounds/Truck Fender Rev.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Start Up.wav", __ASSET__assets_sounds_truck_start_up_wav);
+		type.set ("assets/sounds/Truck Start Up.wav", AssetType.SOUND);
+		className.set ("assets/sounds/Truck Start.wav", __ASSET__assets_sounds_truck_start_wav);
+		type.set ("assets/sounds/Truck Start.wav", AssetType.SOUND);
 		className.set ("assets/To Do List Sound+Music.txt", __ASSET__assets_to_do_list_sound_music_txt);
 		type.set ("assets/To Do List Sound+Music.txt", AssetType.TEXT);
 		className.set ("assets/sounds/beep.mp3", __ASSET__assets_sounds_beep_mp3);
@@ -132,10 +300,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/data/HouseTile.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/data/Map1.tmx";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/data/RoadLawnTiles.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/data/Tiles.jpg";
 		path.set (id, id);
 		
@@ -152,6 +328,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/batterspritesheet.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/clearlyacar.png";
 		path.set (id, id);
 		
@@ -160,11 +340,167 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/house1.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/house1up (2).png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/house1up.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/house2.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/house2right.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/HouseTile.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/HouseTiles.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/Lawn/bot.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/botandleft.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/botandright.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/botleftdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/botrightdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/grass.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/leftvert.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/rightvert.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/top.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/topandleft.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/topandright.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/topleftdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Lawn/toprightdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/mailboxframe1.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/mailboxframe2.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/backwardDiagonal.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/bottomleftdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/bottomrightdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/forwardDiagonal.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/horizBot.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/horizMid.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/horizTop.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/Intersection.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/road.sai";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "assets/images/Road/topleftdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/toprightdiag.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/VertLeft.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Road/VertRight.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/RoadLawnTiles.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/stopsign.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/Tiles.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/tree1.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/tree2.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -184,10 +520,66 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
+		id = "assets/sounds/Mailbox Bat Smack.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Mailbox Hitting Mailbox A.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Mailbox Hitting Mailbox B.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Mailbox Thud.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/sounds-go-here.txt";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/sounds/Truck Engine Loop.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Engine Rev Up.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Engine Slow Down.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Engine Slow Rev Up.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Fender Rev Loop Movement.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Fender Rev Loop Slowing Down.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Fender Rev To Constant Movement.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Fender Rev.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Start Up.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/Truck Start.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
 		id = "assets/To Do List Sound+Music.txt";
 		path.set (id, id);
 		
@@ -237,8 +629,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		
+		className.set ("assets/data/HouseTile.png", __ASSET__assets_data_housetile_png);
+		type.set ("assets/data/HouseTile.png", AssetType.IMAGE);
+		
 		className.set ("assets/data/Map1.tmx", __ASSET__assets_data_map1_tmx);
 		type.set ("assets/data/Map1.tmx", AssetType.TEXT);
+		
+		className.set ("assets/data/RoadLawnTiles.jpg", __ASSET__assets_data_roadlawntiles_jpg);
+		type.set ("assets/data/RoadLawnTiles.jpg", AssetType.IMAGE);
 		
 		className.set ("assets/data/Tiles.jpg", __ASSET__assets_data_tiles_jpg);
 		type.set ("assets/data/Tiles.jpg", AssetType.IMAGE);
@@ -252,17 +650,137 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/images/batterframe3.png", __ASSET__assets_images_batterframe3_png);
 		type.set ("assets/images/batterframe3.png", AssetType.IMAGE);
 		
+		className.set ("assets/images/batterspritesheet.jpg", __ASSET__assets_images_batterspritesheet_jpg);
+		type.set ("assets/images/batterspritesheet.jpg", AssetType.IMAGE);
+		
 		className.set ("assets/images/clearlyacar.png", __ASSET__assets_images_clearlyacar_png);
 		type.set ("assets/images/clearlyacar.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/CutsceneTest.png", __ASSET__assets_images_cutscenetest_png);
 		type.set ("assets/images/CutsceneTest.png", AssetType.IMAGE);
 		
+		className.set ("assets/images/house1.png", __ASSET__assets_images_house1_png);
+		type.set ("assets/images/house1.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/house1up (2).png", __ASSET__assets_images_house1up__2__png);
+		type.set ("assets/images/house1up (2).png", AssetType.IMAGE);
+		
+		className.set ("assets/images/house1up.png", __ASSET__assets_images_house1up_png);
+		type.set ("assets/images/house1up.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/house2.png", __ASSET__assets_images_house2_png);
+		type.set ("assets/images/house2.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/house2right.png", __ASSET__assets_images_house2right_png);
+		type.set ("assets/images/house2right.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/HouseTile.png", __ASSET__assets_images_housetile_png);
+		type.set ("assets/images/HouseTile.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/HouseTiles.png", __ASSET__assets_images_housetiles_png);
+		type.set ("assets/images/HouseTiles.png", AssetType.IMAGE);
+		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		
+		className.set ("assets/images/Lawn/bot.png", __ASSET__assets_images_lawn_bot_png);
+		type.set ("assets/images/Lawn/bot.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/botandleft.png", __ASSET__assets_images_lawn_botandleft_png);
+		type.set ("assets/images/Lawn/botandleft.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/botandright.png", __ASSET__assets_images_lawn_botandright_png);
+		type.set ("assets/images/Lawn/botandright.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/botleftdiag.png", __ASSET__assets_images_lawn_botleftdiag_png);
+		type.set ("assets/images/Lawn/botleftdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/botrightdiag.png", __ASSET__assets_images_lawn_botrightdiag_png);
+		type.set ("assets/images/Lawn/botrightdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/grass.png", __ASSET__assets_images_lawn_grass_png);
+		type.set ("assets/images/Lawn/grass.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/leftvert.png", __ASSET__assets_images_lawn_leftvert_png);
+		type.set ("assets/images/Lawn/leftvert.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/rightvert.png", __ASSET__assets_images_lawn_rightvert_png);
+		type.set ("assets/images/Lawn/rightvert.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/top.png", __ASSET__assets_images_lawn_top_png);
+		type.set ("assets/images/Lawn/top.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/topandleft.png", __ASSET__assets_images_lawn_topandleft_png);
+		type.set ("assets/images/Lawn/topandleft.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/topandright.png", __ASSET__assets_images_lawn_topandright_png);
+		type.set ("assets/images/Lawn/topandright.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/topleftdiag.png", __ASSET__assets_images_lawn_topleftdiag_png);
+		type.set ("assets/images/Lawn/topleftdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Lawn/toprightdiag.png", __ASSET__assets_images_lawn_toprightdiag_png);
+		type.set ("assets/images/Lawn/toprightdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/mailboxframe1.png", __ASSET__assets_images_mailboxframe1_png);
+		type.set ("assets/images/mailboxframe1.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/mailboxframe2.png", __ASSET__assets_images_mailboxframe2_png);
+		type.set ("assets/images/mailboxframe2.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/backwardDiagonal.png", __ASSET__assets_images_road_backwarddiagonal_png);
+		type.set ("assets/images/Road/backwardDiagonal.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/bottomleftdiag.png", __ASSET__assets_images_road_bottomleftdiag_png);
+		type.set ("assets/images/Road/bottomleftdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/bottomrightdiag.png", __ASSET__assets_images_road_bottomrightdiag_png);
+		type.set ("assets/images/Road/bottomrightdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/forwardDiagonal.png", __ASSET__assets_images_road_forwarddiagonal_png);
+		type.set ("assets/images/Road/forwardDiagonal.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/horizBot.png", __ASSET__assets_images_road_horizbot_png);
+		type.set ("assets/images/Road/horizBot.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/horizMid.png", __ASSET__assets_images_road_horizmid_png);
+		type.set ("assets/images/Road/horizMid.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/horizTop.png", __ASSET__assets_images_road_horiztop_png);
+		type.set ("assets/images/Road/horizTop.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/Intersection.png", __ASSET__assets_images_road_intersection_png);
+		type.set ("assets/images/Road/Intersection.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/road.sai", __ASSET__assets_images_road_road_sai);
+		type.set ("assets/images/Road/road.sai", AssetType.TEXT);
+		
+		className.set ("assets/images/Road/topleftdiag.png", __ASSET__assets_images_road_topleftdiag_png);
+		type.set ("assets/images/Road/topleftdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/toprightdiag.png", __ASSET__assets_images_road_toprightdiag_png);
+		type.set ("assets/images/Road/toprightdiag.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/VertLeft.png", __ASSET__assets_images_road_vertleft_png);
+		type.set ("assets/images/Road/VertLeft.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Road/VertRight.png", __ASSET__assets_images_road_vertright_png);
+		type.set ("assets/images/Road/VertRight.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/RoadLawnTiles.jpg", __ASSET__assets_images_roadlawntiles_jpg);
+		type.set ("assets/images/RoadLawnTiles.jpg", AssetType.IMAGE);
+		
+		className.set ("assets/images/stopsign.png", __ASSET__assets_images_stopsign_png);
+		type.set ("assets/images/stopsign.png", AssetType.IMAGE);
+		
 		className.set ("assets/images/Tiles.jpg", __ASSET__assets_images_tiles_jpg);
 		type.set ("assets/images/Tiles.jpg", AssetType.IMAGE);
+		
+		className.set ("assets/images/tree1.png", __ASSET__assets_images_tree1_png);
+		type.set ("assets/images/tree1.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/tree2.png", __ASSET__assets_images_tree2_png);
+		type.set ("assets/images/tree2.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/TruckSprite.png", __ASSET__assets_images_trucksprite_png);
 		type.set ("assets/images/TruckSprite.png", AssetType.IMAGE);
@@ -276,8 +794,50 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/music/Whiskey on the Mississippi.mp3", __ASSET__assets_music_whiskey_on_the_mississippi_mp3);
 		type.set ("assets/music/Whiskey on the Mississippi.mp3", AssetType.MUSIC);
 		
+		className.set ("assets/sounds/Mailbox Bat Smack.wav", __ASSET__assets_sounds_mailbox_bat_smack_wav);
+		type.set ("assets/sounds/Mailbox Bat Smack.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Mailbox Hitting Mailbox A.wav", __ASSET__assets_sounds_mailbox_hitting_mailbox_a_wav);
+		type.set ("assets/sounds/Mailbox Hitting Mailbox A.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Mailbox Hitting Mailbox B.wav", __ASSET__assets_sounds_mailbox_hitting_mailbox_b_wav);
+		type.set ("assets/sounds/Mailbox Hitting Mailbox B.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Mailbox Thud.wav", __ASSET__assets_sounds_mailbox_thud_wav);
+		type.set ("assets/sounds/Mailbox Thud.wav", AssetType.SOUND);
+		
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/sounds/Truck Engine Loop.wav", __ASSET__assets_sounds_truck_engine_loop_wav);
+		type.set ("assets/sounds/Truck Engine Loop.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Engine Rev Up.wav", __ASSET__assets_sounds_truck_engine_rev_up_wav);
+		type.set ("assets/sounds/Truck Engine Rev Up.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Engine Slow Down.wav", __ASSET__assets_sounds_truck_engine_slow_down_wav);
+		type.set ("assets/sounds/Truck Engine Slow Down.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Engine Slow Rev Up.wav", __ASSET__assets_sounds_truck_engine_slow_rev_up_wav);
+		type.set ("assets/sounds/Truck Engine Slow Rev Up.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Fender Rev Loop Movement.wav", __ASSET__assets_sounds_truck_fender_rev_loop_movement_wav);
+		type.set ("assets/sounds/Truck Fender Rev Loop Movement.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Fender Rev Loop Slowing Down.wav", __ASSET__assets_sounds_truck_fender_rev_loop_slowing_down_wav);
+		type.set ("assets/sounds/Truck Fender Rev Loop Slowing Down.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Fender Rev To Constant Movement.wav", __ASSET__assets_sounds_truck_fender_rev_to_constant_movement_wav);
+		type.set ("assets/sounds/Truck Fender Rev To Constant Movement.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Fender Rev.wav", __ASSET__assets_sounds_truck_fender_rev_wav);
+		type.set ("assets/sounds/Truck Fender Rev.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Start Up.wav", __ASSET__assets_sounds_truck_start_up_wav);
+		type.set ("assets/sounds/Truck Start Up.wav", AssetType.SOUND);
+		
+		className.set ("assets/sounds/Truck Start.wav", __ASSET__assets_sounds_truck_start_wav);
+		type.set ("assets/sounds/Truck Start.wav", AssetType.SOUND);
 		
 		className.set ("assets/To Do List Sound+Music.txt", __ASSET__assets_to_do_list_sound_music_txt);
 		type.set ("assets/To Do List Sound+Music.txt", AssetType.TEXT);
@@ -1018,20 +1578,76 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_housetile_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_data_map1_tmx extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_roadlawntiles_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_data_tiles_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_batterframe1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_batterframe2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_batterframe3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_batterspritesheet_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_clearlyacar_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_cutscenetest_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_house1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_house1up__2__png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_house1up_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_house2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_house2right_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_housetile_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_housetiles_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_bot_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_botandleft_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_botandright_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_botleftdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_botrightdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_grass_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_leftvert_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_rightvert_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_top_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_topandleft_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_topandright_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_topleftdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_lawn_toprightdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_mailboxframe1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_mailboxframe2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_backwarddiagonal_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_bottomleftdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_bottomrightdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_forwarddiagonal_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_horizbot_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_horizmid_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_horiztop_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_intersection_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_road_sai extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_topleftdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_toprightdiag_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_vertleft_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_road_vertright_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_roadlawntiles_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_stopsign_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_tiles_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_tree1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_tree2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_trucksprite_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_with_filter_no_sirens_wav extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_music_whiskey_on_the_mississippi_mp3 extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_mailbox_bat_smack_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_mailbox_hitting_mailbox_a_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_mailbox_hitting_mailbox_b_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_mailbox_thud_wav extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_engine_loop_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_engine_rev_up_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_engine_slow_down_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_engine_slow_rev_up_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_fender_rev_loop_movement_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_fender_rev_loop_slowing_down_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_fender_rev_to_constant_movement_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_fender_rev_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_start_up_wav extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_sounds_truck_start_wav extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_to_do_list_sound_music_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_beep_mp3 extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_flixel_mp3 extends null { }
@@ -1042,6 +1658,62 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1075,20 +1747,76 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
+@:image("assets/data/HouseTile.png") #if display private #end class __ASSET__assets_data_housetile_png extends lime.graphics.Image {}
 @:file("assets/data/Map1.tmx") #if display private #end class __ASSET__assets_data_map1_tmx extends lime.utils.ByteArray {}
+@:image("assets/data/RoadLawnTiles.jpg") #if display private #end class __ASSET__assets_data_roadlawntiles_jpg extends lime.graphics.Image {}
 @:image("assets/data/Tiles.jpg") #if display private #end class __ASSET__assets_data_tiles_jpg extends lime.graphics.Image {}
 @:image("assets/images/BatterFrame1.png") #if display private #end class __ASSET__assets_images_batterframe1_png extends lime.graphics.Image {}
 @:image("assets/images/batterframe2.png") #if display private #end class __ASSET__assets_images_batterframe2_png extends lime.graphics.Image {}
 @:image("assets/images/batterframe3.png") #if display private #end class __ASSET__assets_images_batterframe3_png extends lime.graphics.Image {}
+@:image("assets/images/batterspritesheet.jpg") #if display private #end class __ASSET__assets_images_batterspritesheet_jpg extends lime.graphics.Image {}
 @:image("assets/images/clearlyacar.png") #if display private #end class __ASSET__assets_images_clearlyacar_png extends lime.graphics.Image {}
 @:image("assets/images/CutsceneTest.png") #if display private #end class __ASSET__assets_images_cutscenetest_png extends lime.graphics.Image {}
+@:image("assets/images/house1.png") #if display private #end class __ASSET__assets_images_house1_png extends lime.graphics.Image {}
+@:image("assets/images/house1up (2).png") #if display private #end class __ASSET__assets_images_house1up__2__png extends lime.graphics.Image {}
+@:image("assets/images/house1up.png") #if display private #end class __ASSET__assets_images_house1up_png extends lime.graphics.Image {}
+@:image("assets/images/house2.png") #if display private #end class __ASSET__assets_images_house2_png extends lime.graphics.Image {}
+@:image("assets/images/house2right.png") #if display private #end class __ASSET__assets_images_house2right_png extends lime.graphics.Image {}
+@:image("assets/images/HouseTile.png") #if display private #end class __ASSET__assets_images_housetile_png extends lime.graphics.Image {}
+@:image("assets/images/HouseTiles.png") #if display private #end class __ASSET__assets_images_housetiles_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
+@:image("assets/images/Lawn/bot.png") #if display private #end class __ASSET__assets_images_lawn_bot_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/botandleft.png") #if display private #end class __ASSET__assets_images_lawn_botandleft_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/botandright.png") #if display private #end class __ASSET__assets_images_lawn_botandright_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/botleftdiag.png") #if display private #end class __ASSET__assets_images_lawn_botleftdiag_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/botrightdiag.png") #if display private #end class __ASSET__assets_images_lawn_botrightdiag_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/grass.png") #if display private #end class __ASSET__assets_images_lawn_grass_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/leftvert.png") #if display private #end class __ASSET__assets_images_lawn_leftvert_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/rightvert.png") #if display private #end class __ASSET__assets_images_lawn_rightvert_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/top.png") #if display private #end class __ASSET__assets_images_lawn_top_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/topandleft.png") #if display private #end class __ASSET__assets_images_lawn_topandleft_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/topandright.png") #if display private #end class __ASSET__assets_images_lawn_topandright_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/topleftdiag.png") #if display private #end class __ASSET__assets_images_lawn_topleftdiag_png extends lime.graphics.Image {}
+@:image("assets/images/Lawn/toprightdiag.png") #if display private #end class __ASSET__assets_images_lawn_toprightdiag_png extends lime.graphics.Image {}
+@:image("assets/images/mailboxframe1.png") #if display private #end class __ASSET__assets_images_mailboxframe1_png extends lime.graphics.Image {}
+@:image("assets/images/mailboxframe2.png") #if display private #end class __ASSET__assets_images_mailboxframe2_png extends lime.graphics.Image {}
+@:image("assets/images/Road/backwardDiagonal.png") #if display private #end class __ASSET__assets_images_road_backwarddiagonal_png extends lime.graphics.Image {}
+@:image("assets/images/Road/bottomleftdiag.png") #if display private #end class __ASSET__assets_images_road_bottomleftdiag_png extends lime.graphics.Image {}
+@:image("assets/images/Road/bottomrightdiag.png") #if display private #end class __ASSET__assets_images_road_bottomrightdiag_png extends lime.graphics.Image {}
+@:image("assets/images/Road/forwardDiagonal.png") #if display private #end class __ASSET__assets_images_road_forwarddiagonal_png extends lime.graphics.Image {}
+@:image("assets/images/Road/horizBot.png") #if display private #end class __ASSET__assets_images_road_horizbot_png extends lime.graphics.Image {}
+@:image("assets/images/Road/horizMid.png") #if display private #end class __ASSET__assets_images_road_horizmid_png extends lime.graphics.Image {}
+@:image("assets/images/Road/horizTop.png") #if display private #end class __ASSET__assets_images_road_horiztop_png extends lime.graphics.Image {}
+@:image("assets/images/Road/Intersection.png") #if display private #end class __ASSET__assets_images_road_intersection_png extends lime.graphics.Image {}
+@:file("assets/images/Road/road.sai") #if display private #end class __ASSET__assets_images_road_road_sai extends lime.utils.ByteArray {}
+@:image("assets/images/Road/topleftdiag.png") #if display private #end class __ASSET__assets_images_road_topleftdiag_png extends lime.graphics.Image {}
+@:image("assets/images/Road/toprightdiag.png") #if display private #end class __ASSET__assets_images_road_toprightdiag_png extends lime.graphics.Image {}
+@:image("assets/images/Road/VertLeft.png") #if display private #end class __ASSET__assets_images_road_vertleft_png extends lime.graphics.Image {}
+@:image("assets/images/Road/VertRight.png") #if display private #end class __ASSET__assets_images_road_vertright_png extends lime.graphics.Image {}
+@:image("assets/images/RoadLawnTiles.jpg") #if display private #end class __ASSET__assets_images_roadlawntiles_jpg extends lime.graphics.Image {}
+@:image("assets/images/stopsign.png") #if display private #end class __ASSET__assets_images_stopsign_png extends lime.graphics.Image {}
 @:image("assets/images/Tiles.jpg") #if display private #end class __ASSET__assets_images_tiles_jpg extends lime.graphics.Image {}
+@:image("assets/images/tree1.png") #if display private #end class __ASSET__assets_images_tree1_png extends lime.graphics.Image {}
+@:image("assets/images/tree2.png") #if display private #end class __ASSET__assets_images_tree2_png extends lime.graphics.Image {}
 @:image("assets/images/TruckSprite.png") #if display private #end class __ASSET__assets_images_trucksprite_png extends lime.graphics.Image {}
 @:file("assets/music/Music With Filter No Sirens.wav") #if display private #end class __ASSET__assets_music_music_with_filter_no_sirens_wav extends lime.utils.ByteArray {}
 @:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
 @:file("assets/music/Whiskey on the Mississippi.mp3") #if display private #end class __ASSET__assets_music_whiskey_on_the_mississippi_mp3 extends lime.utils.ByteArray {}
+@:file("assets/sounds/Mailbox Bat Smack.wav") #if display private #end class __ASSET__assets_sounds_mailbox_bat_smack_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Mailbox Hitting Mailbox A.wav") #if display private #end class __ASSET__assets_sounds_mailbox_hitting_mailbox_a_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Mailbox Hitting Mailbox B.wav") #if display private #end class __ASSET__assets_sounds_mailbox_hitting_mailbox_b_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Mailbox Thud.wav") #if display private #end class __ASSET__assets_sounds_mailbox_thud_wav extends lime.utils.ByteArray {}
 @:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Engine Loop.wav") #if display private #end class __ASSET__assets_sounds_truck_engine_loop_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Engine Rev Up.wav") #if display private #end class __ASSET__assets_sounds_truck_engine_rev_up_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Engine Slow Down.wav") #if display private #end class __ASSET__assets_sounds_truck_engine_slow_down_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Engine Slow Rev Up.wav") #if display private #end class __ASSET__assets_sounds_truck_engine_slow_rev_up_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Fender Rev Loop Movement.wav") #if display private #end class __ASSET__assets_sounds_truck_fender_rev_loop_movement_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Fender Rev Loop Slowing Down.wav") #if display private #end class __ASSET__assets_sounds_truck_fender_rev_loop_slowing_down_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Fender Rev To Constant Movement.wav") #if display private #end class __ASSET__assets_sounds_truck_fender_rev_to_constant_movement_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Fender Rev.wav") #if display private #end class __ASSET__assets_sounds_truck_fender_rev_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Start Up.wav") #if display private #end class __ASSET__assets_sounds_truck_start_up_wav extends lime.utils.ByteArray {}
+@:file("assets/sounds/Truck Start.wav") #if display private #end class __ASSET__assets_sounds_truck_start_wav extends lime.utils.ByteArray {}
 @:file("assets/To Do List Sound+Music.txt") #if display private #end class __ASSET__assets_to_do_list_sound_music_txt extends lime.utils.ByteArray {}
 @:file("C:/HaxeToolkit/haxe/lib/flixel/3,3,11/assets/sounds/beep.mp3") #if display private #end class __ASSET__assets_sounds_beep_mp3 extends lime.utils.ByteArray {}
 @:file("C:/HaxeToolkit/haxe/lib/flixel/3,3,11/assets/sounds/flixel.mp3") #if display private #end class __ASSET__assets_sounds_flixel_mp3 extends lime.utils.ByteArray {}
