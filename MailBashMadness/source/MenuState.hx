@@ -17,7 +17,7 @@ class MenuState extends FlxState
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	public static inline var OPTIONS : Int = 2;
-	
+	var titleTxt : FlxText; //Title
 	var opt0txt : FlxText; //Start Game Choice
 	var opt1txt : FlxText; //Quit Game Choice
 	var selector : FlxSprite; //Which start game choice you are on
@@ -26,11 +26,14 @@ class MenuState extends FlxState
 	{
 		FlxG.state.bgColor = FlxColor.NAVY_BLUE;
 		//Simple stuff right here
+		titleTxt = new FlxText(FlxG.width * 1 / 3, FlxG.height * 1 / 4, "Mail Bash Madness");
+		titleTxt.setFormat("Arial", 42, FlxColor.WHITE, "center");
 		opt0txt = new FlxText(FlxG.width * 1/2 - 100, FlxG.height * 1 / 2 - 100, 400, "Start Game");
 		opt1txt = new FlxText(FlxG.width * 1/2 - 100, FlxG.height * 1 / 2 - 50, 400, "Start Without Intro");
 		opt0txt.size = opt1txt.size = 32;
 		add(opt0txt);
 		add(opt1txt);
+		add(titleTxt);
 				
 		selector = new FlxSprite(); //ADD SPRITE FOR THIS OR CHANGE TO HIGHLIGHT SELECTION <<<
 		selector.makeGraphic(10, 10, FlxColor.YELLOW);

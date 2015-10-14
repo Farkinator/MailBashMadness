@@ -43,7 +43,19 @@ ApplicationMain.create = function() {
 	types.push("IMAGE");
 	urls.push("assets/images/clearlyacar.png");
 	types.push("IMAGE");
+	urls.push("assets/images/Cutscene/Cutscene1.png");
+	types.push("IMAGE");
+	urls.push("assets/images/Cutscene/Cutscene2.png");
+	types.push("IMAGE");
+	urls.push("assets/images/Cutscene/Cutscene3.png");
+	types.push("IMAGE");
+	urls.push("assets/images/Cutscene/Cutscene4.png");
+	types.push("IMAGE");
+	urls.push("assets/images/Cutscene/Cutscene5.png");
+	types.push("IMAGE");
 	urls.push("assets/images/CutsceneTest.png");
+	types.push("IMAGE");
+	urls.push("assets/images/fix_attempt.png");
 	types.push("IMAGE");
 	urls.push("assets/images/house1.png");
 	types.push("IMAGE");
@@ -91,6 +103,8 @@ ApplicationMain.create = function() {
 	types.push("IMAGE");
 	urls.push("assets/images/mailboxframe2.png");
 	types.push("IMAGE");
+	urls.push("assets/images/opening.sai");
+	types.push("TEXT");
 	urls.push("assets/images/Road/backwardDiagonal.png");
 	types.push("IMAGE");
 	urls.push("assets/images/Road/bottomleftdiag.png");
@@ -119,9 +133,17 @@ ApplicationMain.create = function() {
 	types.push("IMAGE");
 	urls.push("assets/images/RoadLawnTiles.jpg");
 	types.push("IMAGE");
+	urls.push("assets/images/speechbubbleForBatter.png");
+	types.push("IMAGE");
+	urls.push("assets/images/speechbubbleForDriver.png");
+	types.push("IMAGE");
+	urls.push("assets/images/speechbubbleForPassenger.png");
+	types.push("IMAGE");
 	urls.push("assets/images/stopsign.png");
 	types.push("IMAGE");
 	urls.push("assets/images/Tiles.jpg");
+	types.push("IMAGE");
+	urls.push("assets/images/titleandcutscene.png");
 	types.push("IMAGE");
 	urls.push("assets/images/tree1.png");
 	types.push("IMAGE");
@@ -129,41 +151,29 @@ ApplicationMain.create = function() {
 	types.push("IMAGE");
 	urls.push("assets/images/TruckSprite.png");
 	types.push("IMAGE");
-	urls.push("assets/music/Music With Filter No Sirens.wav");
-	types.push("SOUND");
 	urls.push("assets/music/music-goes-here.txt");
 	types.push("TEXT");
-	urls.push("assets/music/Whiskey on the Mississippi.mp3");
+	urls.push("assets/music/Music_1.wav");
+	types.push("SOUND");
+	urls.push("assets/music/Whiskey_on_the_Mississippi.mp3");
 	types.push("MUSIC");
-	urls.push("assets/sounds/Mailbox Bat Smack.wav");
+	urls.push("assets/sounds/bathit.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/Mailbox Hitting Mailbox A.wav");
+	urls.push("assets/sounds/batmiss.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/Mailbox Hitting Mailbox B.wav");
+	urls.push("assets/sounds/drift.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/Mailbox Thud.wav");
+	urls.push("assets/sounds/mailhitmail.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/sounds-go-here.txt");
-	types.push("TEXT");
-	urls.push("assets/sounds/Truck Engine Loop.wav");
+	urls.push("assets/sounds/ph.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/Truck Engine Rev Up.wav");
+	urls.push("assets/sounds/truckhitwall.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/Truck Engine Slow Down.wav");
+	urls.push("assets/sounds/truckloop.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/Truck Engine Slow Rev Up.wav");
+	urls.push("assets/sounds/truckrevup.wav");
 	types.push("SOUND");
-	urls.push("assets/sounds/Truck Fender Rev Loop Movement.wav");
-	types.push("SOUND");
-	urls.push("assets/sounds/Truck Fender Rev Loop Slowing Down.wav");
-	types.push("SOUND");
-	urls.push("assets/sounds/Truck Fender Rev To Constant Movement.wav");
-	types.push("SOUND");
-	urls.push("assets/sounds/Truck Fender Rev.wav");
-	types.push("SOUND");
-	urls.push("assets/sounds/Truck Start Up.wav");
-	types.push("SOUND");
-	urls.push("assets/sounds/Truck Start.wav");
+	urls.push("assets/sounds/truckslow.wav");
 	types.push("SOUND");
 	urls.push("assets/To Do List Sound+Music.txt");
 	types.push("TEXT");
@@ -201,7 +211,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "404", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
+	ApplicationMain.config = { build : "476", company : "HaxeFlixel", file : "MailBashMadness", fps : 60, name : "MailBashMadness", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "MailBashMadness", vsync : true, width : 640, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -1550,7 +1560,25 @@ var DefaultAssetLibrary = function() {
 	id = "assets/images/clearlyacar.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
+	id = "assets/images/Cutscene/Cutscene1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/Cutscene/Cutscene2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/Cutscene/Cutscene3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/Cutscene/Cutscene4.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/Cutscene/Cutscene5.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
 	id = "assets/images/CutsceneTest.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/fix_attempt.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/images/house1.png";
@@ -1622,6 +1650,9 @@ var DefaultAssetLibrary = function() {
 	id = "assets/images/mailboxframe2.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
+	id = "assets/images/opening.sai";
+	this.path.set(id,id);
+	this.type.set(id,"TEXT");
 	id = "assets/images/Road/backwardDiagonal.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
@@ -1664,10 +1695,22 @@ var DefaultAssetLibrary = function() {
 	id = "assets/images/RoadLawnTiles.jpg";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
+	id = "assets/images/speechbubbleForBatter.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/speechbubbleForDriver.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/speechbubbleForPassenger.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
 	id = "assets/images/stopsign.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/images/Tiles.jpg";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/titleandcutscene.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/images/tree1.png";
@@ -1679,58 +1722,40 @@ var DefaultAssetLibrary = function() {
 	id = "assets/images/TruckSprite.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "assets/music/Music With Filter No Sirens.wav";
-	this.path.set(id,id);
-	this.type.set(id,"SOUND");
 	id = "assets/music/music-goes-here.txt";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
-	id = "assets/music/Whiskey on the Mississippi.mp3";
+	id = "assets/music/Music_1.wav";
+	this.path.set(id,id);
+	this.type.set(id,"SOUND");
+	id = "assets/music/Whiskey_on_the_Mississippi.mp3";
 	this.path.set(id,id);
 	this.type.set(id,"MUSIC");
-	id = "assets/sounds/Mailbox Bat Smack.wav";
+	id = "assets/sounds/bathit.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/Mailbox Hitting Mailbox A.wav";
+	id = "assets/sounds/batmiss.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/Mailbox Hitting Mailbox B.wav";
+	id = "assets/sounds/drift.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/Mailbox Thud.wav";
+	id = "assets/sounds/mailhitmail.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/sounds-go-here.txt";
-	this.path.set(id,id);
-	this.type.set(id,"TEXT");
-	id = "assets/sounds/Truck Engine Loop.wav";
+	id = "assets/sounds/ph.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Engine Rev Up.wav";
+	id = "assets/sounds/truckhitwall.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Engine Slow Down.wav";
+	id = "assets/sounds/truckloop.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Engine Slow Rev Up.wav";
+	id = "assets/sounds/truckrevup.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Fender Rev Loop Movement.wav";
-	this.path.set(id,id);
-	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Fender Rev Loop Slowing Down.wav";
-	this.path.set(id,id);
-	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Fender Rev To Constant Movement.wav";
-	this.path.set(id,id);
-	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Fender Rev.wav";
-	this.path.set(id,id);
-	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Start Up.wav";
-	this.path.set(id,id);
-	this.type.set(id,"SOUND");
-	id = "assets/sounds/Truck Start.wav";
+	id = "assets/sounds/truckslow.wav";
 	this.path.set(id,id);
 	this.type.set(id,"SOUND");
 	id = "assets/To Do List Sound+Music.txt";
@@ -2607,7 +2632,7 @@ flixel_FlxState.prototype = $extend(flixel_group_FlxGroup.prototype,{
 	,__properties__: $extend(flixel_group_FlxGroup.prototype.__properties__,{set_bgColor:"set_bgColor",get_bgColor:"get_bgColor"})
 });
 var IntroState = function(MaxSize) {
-	this.totalFrames = 1;
+	this.totalFrames = 5;
 	this.frame = 0;
 	flixel_FlxState.call(this,MaxSize);
 };
@@ -2620,9 +2645,10 @@ IntroState.prototype = $extend(flixel_FlxState.prototype,{
 	,cutscenes: null
 	,image: null
 	,create: function() {
-		this.cutscenes = ["assets/images/CutsceneTest.png"];
+		this.cutscenes = ["assets/images/Cutscene/Cutscene1.png","assets/images/Cutscene/Cutscene2.png","assets/images/Cutscene/Cutscene3.png","assets/images/Cutscene/Cutscene4.png","assets/images/Cutscene/Cutscene5.png"];
 		this.image = new flixel_FlxSprite(null,null,this.cutscenes[this.frame]);
 		this.add(this.image);
+		flixel_FlxG.camera.fade(-16777216,.33,true);
 		flixel_FlxState.prototype.create.call(this);
 	}
 	,destroy: function() {
@@ -2631,9 +2657,14 @@ IntroState.prototype = $extend(flixel_FlxState.prototype,{
 	,update: function() {
 		if(flixel_FlxG.keys.checkKeyStatus(["SPACE","ENTER"],2)) {
 			this.frame++;
-			if(this.frame == this.totalFrames) flixel_FlxG.switchState(new PlayState()); else this.image.loadGraphic(this.cutscenes[this.frame]);
+			if(this.frame == this.totalFrames) flixel_FlxG.camera.fade(-16777216,1,false,function() {
+				flixel_FlxG.switchState(new PlayState());
+			}); else this.image.loadGraphic(this.cutscenes[this.frame]);
 		}
 		flixel_FlxState.prototype.update.call(this);
+	}
+	,onFade: function() {
+		flixel_FlxG.switchState(new PlayState());
 	}
 	,__class__: IntroState
 });
@@ -2722,17 +2753,21 @@ $hxClasses["MenuState"] = MenuState;
 MenuState.__name__ = ["MenuState"];
 MenuState.__super__ = flixel_FlxState;
 MenuState.prototype = $extend(flixel_FlxState.prototype,{
-	opt0txt: null
+	titleTxt: null
+	,opt0txt: null
 	,opt1txt: null
 	,selector: null
 	,selectNum: null
 	,create: function() {
 		flixel_FlxG.game._state.set_bgColor(-16777088);
+		this.titleTxt = new flixel_text_FlxText(flixel_FlxG.width / 3,flixel_FlxG.height / 4,null,"Mail Bash Madness");
+		this.titleTxt.setFormat("Arial",42,-1,"center");
 		this.opt0txt = new flixel_text_FlxText(flixel_FlxG.width / 2 - 100,flixel_FlxG.height / 2 - 100,400,"Start Game");
 		this.opt1txt = new flixel_text_FlxText(flixel_FlxG.width / 2 - 100,flixel_FlxG.height / 2 - 50,400,"Start Without Intro");
 		this.opt0txt.set_size(this.opt1txt.set_size(32));
 		this.add(this.opt0txt);
 		this.add(this.opt1txt);
+		this.add(this.titleTxt);
 		this.selector = new flixel_FlxSprite();
 		this.selector.makeGraphic(10,10,-256);
 		this.selector.set_x(this.opt0txt.x - this.selector.get_width() - 10);

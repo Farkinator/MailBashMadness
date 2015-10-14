@@ -70,7 +70,31 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/Cutscene/Cutscene1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Cutscene/Cutscene2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Cutscene/Cutscene3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Cutscene/Cutscene4.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Cutscene/Cutscene5.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/CutsceneTest.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/fix_attempt.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -166,6 +190,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/opening.sai");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
 		urls.push ("assets/images/Road/backwardDiagonal.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -222,11 +250,27 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/speechbubbleForBatter.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/speechbubbleForDriver.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/speechbubbleForPassenger.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/stopsign.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/Tiles.jpg");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/titleandcutscene.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -242,75 +286,51 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/music/Music With Filter No Sirens.wav");
-		types.push (lime.Assets.AssetType.SOUND);
-		
-		
 		urls.push ("assets/music/music-goes-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/music/Whiskey on the Mississippi.mp3");
+		urls.push ("assets/music/Music_1.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("assets/music/Whiskey_on_the_Mississippi.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
-		urls.push ("assets/sounds/Mailbox Bat Smack.wav");
+		urls.push ("assets/sounds/bathit.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/Mailbox Hitting Mailbox A.wav");
+		urls.push ("assets/sounds/batmiss.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/Mailbox Hitting Mailbox B.wav");
+		urls.push ("assets/sounds/drift.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/Mailbox Thud.wav");
+		urls.push ("assets/sounds/mailhitmail.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/sounds-go-here.txt");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("assets/sounds/Truck Engine Loop.wav");
+		urls.push ("assets/sounds/ph.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/Truck Engine Rev Up.wav");
+		urls.push ("assets/sounds/truckhitwall.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/Truck Engine Slow Down.wav");
+		urls.push ("assets/sounds/truckloop.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/Truck Engine Slow Rev Up.wav");
+		urls.push ("assets/sounds/truckrevup.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
-		urls.push ("assets/sounds/Truck Fender Rev Loop Movement.wav");
-		types.push (lime.Assets.AssetType.SOUND);
-		
-		
-		urls.push ("assets/sounds/Truck Fender Rev Loop Slowing Down.wav");
-		types.push (lime.Assets.AssetType.SOUND);
-		
-		
-		urls.push ("assets/sounds/Truck Fender Rev To Constant Movement.wav");
-		types.push (lime.Assets.AssetType.SOUND);
-		
-		
-		urls.push ("assets/sounds/Truck Fender Rev.wav");
-		types.push (lime.Assets.AssetType.SOUND);
-		
-		
-		urls.push ("assets/sounds/Truck Start Up.wav");
-		types.push (lime.Assets.AssetType.SOUND);
-		
-		
-		urls.push ("assets/sounds/Truck Start.wav");
+		urls.push ("assets/sounds/truckslow.wav");
 		types.push (lime.Assets.AssetType.SOUND);
 		
 		
@@ -402,7 +422,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "404",
+			build: "476",
 			company: "HaxeFlixel",
 			file: "MailBashMadness",
 			fps: 60,

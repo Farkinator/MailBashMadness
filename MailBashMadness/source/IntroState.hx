@@ -11,14 +11,15 @@ import flixel.util.FlxColor;
 class IntroState extends FlxState
 {
 	var frame = 0; //the frame of the cutscene that is active
-	var totalFrames = 1; //the total number of frames in the intro cutscene
+	var totalFrames = 5; //the total number of frames in the intro cutscene
 	var cutscenes : Array<String>;
 	var image : FlxSprite;
 	override public function create():Void
 	{
-		cutscenes = ["assets/images/CutsceneTest.png"]; //an array that stores the file path to the cutscene pngs
+		cutscenes = ["assets/images/Cutscene/Cutscene1.png","assets/images/Cutscene/Cutscene2.png","assets/images/Cutscene/Cutscene3.png","assets/images/Cutscene/Cutscene4.png","assets/images/Cutscene/Cutscene5.png"]; //an array that stores the file path to the cutscene pngs
 		image = new FlxSprite(cutscenes[frame]);
 		add(image);
+		FlxG.camera.fade(FlxColor.BLACK, .33, true);
 		super.create();
 	}
 	
@@ -37,7 +38,9 @@ class IntroState extends FlxState
 			frame++;
 			if (frame == totalFrames)
 			{
-				FlxG.switchState(new PlayState());
+				FlxG.camera.fade(0xff000000,1, false,function() {
+					FlxG.switchState(new PlayState());
+				});
 			}
 			else
 			{
@@ -46,4 +49,8 @@ class IntroState extends FlxState
 		}
 		super.update();
 	}	
+	private function onFade() : Void
+	{
+		FlxG.switchState(new PlayState());
+	}
 }
