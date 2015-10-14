@@ -4,6 +4,66 @@
 		"selected_items":
 		[
 			[
+				"ve",
+				"Vec2	class"
+			],
+			[
+				"x",
+				"setxy(...)	nape.geom.Vec2"
+			],
+			[
+				"FlxNape",
+				"FlxNapeState	flixel.addons.nape"
+			],
+			[
+				"FlxN",
+				"FlxNapeState	class"
+			],
+			[
+				"Flx",
+				"FlxNapeSprite	class"
+			],
+			[
+				"Flxn",
+				"FlxNapeState	class"
+			],
+			[
+				"FlxNap",
+				"FlxNapeState	flixel.addons.nape"
+			],
+			[
+				"FlxB",
+				"FlxShapeBox	class"
+			],
+			[
+				"rel",
+				"relativeY	Float"
+			],
+			[
+				"FlxS",
+				"FlxSpriteGroup	class"
+			],
+			[
+				"relat",
+				"relativeY	Float"
+			],
+			[
+				"rela",
+				"relativeAngularAcceleration	Float"
+			],
+			[
+				"relative",
+				"relativeScale	flixel.util.FlxPoint"
+			],
+			[
+				"up",
+				"updateHitbox(  )	Void"
+			],
+			[
+				"add",
+				"addons	package"
+			],
+			[
 				"angular",
 				"angularDrag	Float"
 			],
@@ -243,7 +303,7 @@
 			"file": "source/PlayState.hx",
 			"settings":
 			{
-				"buffer_size": 946,
+				"buffer_size": 1369,
 				"line_ending": "Windows"
 			}
 		},
@@ -267,7 +327,7 @@
 			"file": "source/Player.hx",
 			"settings":
 			{
-				"buffer_size": 8075,
+				"buffer_size": 8582,
 				"line_ending": "Windows"
 			}
 		},
@@ -277,6 +337,22 @@
 			{
 				"buffer_size": 6086,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "export/windows/neko/haxe/final.hxml",
+			"settings":
+			{
+				"buffer_size": 651,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Project.xml",
+			"settings":
+			{
+				"buffer_size": 3182,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -316,6 +392,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Farkinator/Downloads/derp/derp/source/Player.hx",
 		"/C/Users/Farkinator/Documents/GameDevI/haxeflixel/MailBashMadness/source/Units/Player.hx",
 		"/C/Users/Farkinator/Downloads/derp/derp/source/MenuState.hx",
 		"/C/Users/Farkinator/Documents/OpSys/p01/processes.txt",
@@ -361,6 +438,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"drag",
+			"angularvelocity",
+			"angle",
+			"drag",
+			"batter",
+			"acceleration",
+			"angular",
+			"angle",
+			"angularvel",
+			"angle",
+			"velocity",
+			"getMidpoint",
 			"ongoing_wait_times",
 			"print ",
 			"ongoing_wait_times",
@@ -476,19 +565,7 @@
 			"vertarray",
 			"vertex_array",
 			"createver",
-			"fs_text",
-			"setup",
-			"createver",
-			"inittexture",
-			"handletexture",
-			"inittexture",
-			"obj.texture",
-			"textureelement",
-			"shaderprogram",
-			"aVertex",
-			"aTexture",
-			"avertexnormal",
-			"texturecoordattribute"
+			"fs_text"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -506,7 +583,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -514,15 +591,15 @@
 					"file": "source/PlayState.hx",
 					"settings":
 					{
-						"buffer_size": 946,
+						"buffer_size": 1369,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								812,
-								812
+								628,
+								628
 							]
 						],
 						"settings":
@@ -532,7 +609,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 46.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -598,15 +675,15 @@
 					"file": "source/Player.hx",
 					"settings":
 					{
-						"buffer_size": 8075,
+						"buffer_size": 8582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1119,
-								1119
+								3442,
+								3442
 							]
 						],
 						"settings":
@@ -616,7 +693,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 170.0,
+						"translation.y": 1000.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -644,6 +721,60 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 653.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "export/windows/neko/haxe/final.hxml",
+					"settings":
+					{
+						"buffer_size": 651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"haxe-build-id": 0,
+							"syntax": "Packages/Haxe/Hxml.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Project.xml",
+					"settings":
+					{
+						"buffer_size": 3182,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1048,
+								1048
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

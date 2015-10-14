@@ -12,8 +12,10 @@ import flixel.tweens.misc.NumTween;
 import flixel.tweens.FlxEase;
 import flixel.tweens.misc.VarTween;
 import flixel.addons.display.FlxNestedSprite;
+import flixel.addons.nape.FlxNapeSprite;
+import nape.geom.Vec2;
 
-class Player extends FlxSprite{
+class Player extends FlxNapeSprite{
 	//+--------------------------------------------+
 	//|            CAR TUNING VALUES               |
 	//+--------------------------------------------+
@@ -55,7 +57,7 @@ class Player extends FlxSprite{
 	
 	public var caraccel:FlxPoint = new FlxPoint(0,0);
 	public var car_speed:Float = 0;
-	public var carvelocity:FlxPoint = new FlxPoint(0,0);
+	public var carvelocity:Vec2 = new Vec2(0,0);
 	var parent:PlayState;
 	public var wheelAngle:Int;
 	//And now for variables involving a SWING OF THE BAT.
@@ -75,20 +77,25 @@ class Player extends FlxSprite{
 	public var batterPoint:FlxPoint = new FlxPoint(300, 400);
 	public var car_midpt:FlxPoint = new FlxPoint(0, 0);
 
+	
+
 	public function new(X:Float=0, Y:Float=0, Parent:PlayState){
 		super(X, Y);
 		loadGraphic("assets/images/fix_attempt.png");
-		width += 1000;
+		trace("wat");
+		createRectangularBody();
+		body.debugDraw = true;
 		batter = new FlxSprite();
 		batter.loadGraphic("assets/images/BatterFrame1.png");
 		batter.scale.set(.6, .6);
 		stamp(batter, 260, 330);
-		drag.set(MAX_SPEED * 8, MAX_SPEED * 8);
-		angularDrag = 1600;
+		// drag.set(MAX_SPEED * 8, MAX_SPEED * 8);
+		// angularDrag = 1600;
 		// maxVelocity.set(MAX_SPEED, MAX_SPEED);
 		parent = Parent;
-		updateHitbox();
+		// updateHitbox();
 		wheelAngle = 0;
+		setDrag(MAX_SPEED * 8, 1600);
 
 	}
 	public function magnitude(point:FlxPoint):Float{
@@ -96,14 +103,12 @@ class Player extends FlxSprite{
 	}
 
 	public override function update():Void{
-
 		var accel_modifier:Float = 0;
 		var deceleration:Float = DECEL;
 		var accel:Float = ACCEL;
 		var max_speed:Float = MAX_SPEED;
 		var handling:Float = 1;
 		var a_c:Float = 0;
-		angularDrag = 1200;
 
 		//I really want analog input.
 		if(FlxG.keys.anyPressed(["A"])){
@@ -111,7 +116,7 @@ class Player extends FlxSprite{
 			accel_modifier = -1;
 		} else if(FlxG.keys.anyPressed(["D"])){
 			accel_modifier = 1;
-			angle += 1;
+			body.rotation+=0.1;
 		} else {
 			accel_modifier = 0;
 		}
@@ -119,7 +124,9 @@ class Player extends FlxSprite{
 			max_speed = (3*MAX_SPEED)/4;
 			deceleration = DECEL /2;
 			handling *= 2.5;
-			angularDrag *= 2;
+			setDrag(MAX_SPEED * 8, 3200);
+		} else {
+			setDrag(MAX_SPEED * 8, 1600);
 		}
 		acceleration.set(0);
 		//Treat the car like a trike, treat the back wheels as pivot points
@@ -153,22 +160,24 @@ class Player extends FlxSprite{
 		} 
 		// v = aV * r - > v / r = aV, but sadly this is in rad/seconds so we need to convert to degree/second.
 		if(car_speed != 0){
-			angularVelocity = (car_speed/turn_radius) * 57.2958 * accel_modifier * handling;
+			body.angularVel = (car_speed/turn_radius) * accel_modifier * handling;
 	
-		} 
+		} else {
+			body.angularVel = 0;
+		}
 		//Now we have the two perpendicular components of our car's acceleration! Man, this has been quite a journey.
 		// accel_modifier will make the acceleration dependent on which way we're steering.
 		caraccel.set(a_c * accel_modifier * handling, accel);
 		// Now let's find the velocity of the car in car space by simply multiplying both of these fields by time elapsed.
 		// Sort of redundant given that we needed the y component of this to determine the x component, but cut me some slack.
-		carvelocity.set(caraccel.x * FlxG.elapsed, car_speed);
+		carvelocity.setxy(caraccel.x * FlxG.elapsed, -1*car_speed);
 		// This is basically a change of basis function. Just ignore the silliness.
 		if(carvelocity.x != 0 || carvelocity.y !=0){
 
- 			velocity = FlxAngle.rotatePoint(carvelocity.x, carvelocity.y, 0, 0, angle);
+ 			body.velocity = body.localVectorToWorld(carvelocity, false);
 	 		
 	 	} else {
-	 		velocity.set(0,0);
+	 		body.velocity.setxy(0,0);
 	 	}
 
 	 	// So that was the movement of the car, here comes... CHARGING THE BAT.
@@ -220,6 +229,7 @@ class Player extends FlxSprite{
 	private function swingBat(Tween:FlxTween):Void{
 		recharging = true;
 		charging = false;
+		parent.swingBat();
 		if(overCharge == true){
 			trace("OUCH! Overswing! Have fun shaking off that stinger");
 			chargeTimeRemaining = CHARGEDURATION * OVERSWING_PENALTY;
